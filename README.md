@@ -10,7 +10,7 @@
 </div>
 <br>
 
-**RE:THINK** is a comprehensive mental health tracking application designed to help users reflect on their emotional and mental well-being. This project was developed during my final year at **HAL College of Technology and Design**, where I studied Information Processing Programming.  
+**RE:THINK** is a comprehensive mental health tracking application designed to help users reflect on their emotional and mental well-being. This project was developed during my final year at **HAL Tokyo College of Technology and Design**, where I studied Information Processing Programming.  
 
 The app is designed **in Japanese** to cater to Japanese-speaking users and includes features to track and analyze daily moods, emotions, activities, and sleep patterns, while providing tools such as a calendar and statistical insights.  
 
