@@ -87,10 +87,18 @@ To get **RE:THINK** up and running on your local machine, follow the steps below
 Update `/rethink/` to match the new folder name (e.g., `/newfoldername/`).
 
 ### 7. Configure the Website
-- Before accessing the website, make sure **Apache** and **MySQL** are started in XAMPP:
-  - In the XAMPP Control Panel, click **Start** next to **Apache** and **MySQL**.
-- Place the **RE:THINK** project folder, named **rethink**, into the `htdocs` directory of your XAMPP installation (usually located at `C:\xampp\htdocs\`).
-- Access the website by navigating to the following URL in your browser:  
+Before accessing the website, follow these steps to set up the project correctly:
+
+1. Open the XAMPP Control Panel and click **Start** next to **Apache** and **MySQL**.
+2. Locate the project folder downloaded from this repository. Inside the repository, you will find a folder named **`rethink`**.
+3. **Important**:  
+   - Only copy the **`rethink`** folder (not the entire repository folder) into the `htdocs` directory of your XAMPP installation (usually located at `C:\xampp\htdocs\`).  
+   - Copying the entire folder downloaded from GitHub (including the repository's root directory with README, license, etc.) into `htdocs` will cause the base URLs in the project files to break.  
+   - Ensure that the **`rethink`** folder is placed directly inside `htdocs`, like this:  
+     ```
+     C:\xampp\htdocs\rethink
+     ```
+4. Access the website by navigating to the following URL in your browser:  
   `http://localhost/rethink/index.php`
 
 ### 8. Access the Application
