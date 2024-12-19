@@ -109,7 +109,48 @@ Before accessing the website, follow these steps to set up the project correctly
 - Ensure that **Apache** and **MySQL** are running whenever you want to access the application.
 - You may need to tweak your **php.ini** file if you face any PHP-related issues.
 
+## How to Log In
 
+To access the application, follow these steps:
+
+### Regular User Login
+1. Click the **Login** button on the homepage.
+2. Enter the username of any **pre-created user**. The usernames are:
+   - `johndoe123`
+   - `janesmith456`
+   - `alexjohnson789`
+   - `sarahlee321`
+   - `markbrown101`
+   - `emilydavis234`
+   - `chriswilson567`
+   - `lilymartinez890`
+   - `michaelwhite123`
+   - `oliviataylor456`  
+3. Use the password `password` for all users to log in.
+
+Alternatively, you can create a **new user account**:
+1. Click the **Sign Up** button.
+2. Fill in the required details to create your account.
+3. After signing up, return to the **Login** page and use your new credentials to log in.
+
+---
+
+### Admin Login
+To access the admin side of the application:
+1. Click the **Login** button.
+2. On the login page, locate the link below the login form:  
+   **"管理者としてログイン"**  
+   *(In English: "Log in as an Admin")*
+3. Click the link to switch to the admin login form.
+4. Use the following credentials to log in as an admin:
+   - **Username:** `MainAdmin`  
+   - **Password:** `admin`
+
+---
+
+### Notes
+- The application is partly in **Japanese**, so some labels and buttons may appear in Japanese.
+- The admin login is intended for managing users, posts, and statistical insights. Be cautious when making changes.
 ## Known Issues
 - The app currently does not support dark mode.
 - The site is not fully responsive across all devices, and may not display optimally on mobile and tablet screens. This is being worked on to improve the user experience.
