@@ -89,7 +89,7 @@ Update `/rethink/` to match the new folder name (e.g., `/newfoldername/`).
 ### 7. Configure the Website
 - Before accessing the website, make sure **Apache** and **MySQL** are started in XAMPP:
   - In the XAMPP Control Panel, click **Start** next to **Apache** and **MySQL**.
-- Place the **RE:THINK** project folder into the `htdocs` directory of your XAMPP installation (usually located at `C:\xampp\htdocs\`).
+- Place the **RE:THINK** project folder, named **rethink**, into the `htdocs` directory of your XAMPP installation (usually located at `C:\xampp\htdocs\`).
 - Access the website by navigating to the following URL in your browser:  
   `http://localhost/rethink/index.php`
 
@@ -110,7 +110,12 @@ Update `/rethink/` to match the new folder name (e.g., `/newfoldername/`).
 <h3>Landing Page</h3>
 <div>
   <img src="Screenshots/Landing-Page.png" alt="Landing Page" width="400" style="display: inline-block; margin-right: 10px;">
-  <img src="Screenshots/Login-Page.png" alt="Login Page" width="400" style="display: inline-block;">
+</div>
+
+<h3>Authentication Pages</h3>
+<div>
+  <img src="Screenshots/Login-Page.png" alt="Login Page" width="400" style="display: inline-block; margin-right: 10px;">
+  <img src="Screenshots/Sign-Up-Page.png" alt="Sign Up Page" width="400" style="display: inline-block;">
 </div>
 
 <h3>User Side</h3>
