@@ -107,6 +107,32 @@ Update `/rethink/` to match the new folder name (e.g., `/newfoldername/`).
 - The site is not fully responsive across all devices, and may not display optimally on mobile and tablet screens. This is being worked on to improve the user experience.
 
 ## Screenshots
+<h3>Landing Page</h3>
+<div>
+  <img src="Screenshots/Index-page.png" alt="Landing Page" width="400" style="display: inline-block; margin-right: 10px;">
+</div>
+
+<h3>User Side</h3>
+<div>
+  <img src="Screenshots/User-Side_My-page.png" alt="User Side - My Page" width="400" style="display: inline-block; margin-right: 10px;">
+  <img src="Screenshots/User-Side_Register-mood.png" alt="User side - Register Mood" width="400" style="display: inline-block;">
+</div>
+
+<div>
+  <img src="Screenshots/User-Side_Insights.png" alt="User Side - Insights" width="400" style="display: inline-block; margin-right: 10px;">
+  <img src="Screenshots/User-Side_Monthly-insights.png" alt="User Side - Montly Insights" width="400" style="display: inline-block;">
+</div>
+
+<h3>Admin Side</h3>
+<div>
+  <img src="Screenshots/Admin-side_Dashboard.png" alt="Admin Side - Dadshboard" width="400" style="display: inline-block; margin-right: 10px;">
+  <img src="Screenshots/Admin-side_Manage-users.png" alt="Admin Side - Manage Users" width="400" style="display: inline-block; margin-right: 10px;">
+</div>
+<div>
+  <img src="Screenshots/Admin-side_Manage-content.png" alt="Admin Side - Manage Contents" width="400" style="display: inline-block; margin-right: 10px;">
+  <img src="Screenshots/Admin-side_Feed-analytics.png" alt="Admin Side - Feed Analytics" width="400" style="display: inline-block;">
+</div>
+<br>
 
 ## Technologies Used  
 - **HTML5**  
