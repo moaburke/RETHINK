@@ -1,0 +1,827 @@
+/**
+ * File Name: auth_pages.css
+ * Author: Moa Burke
+ * Date: 2024-12-17
+ * Description: Styles specific to the authentication pages of the RETHINK project, 
+ * including login, registration, and index page.
+ *
+ * Features:
+ * - Layout and styling for form fields, buttons, and error messages.
+ * - Ensures responsiveness and usability for mobile and desktop users.
+ * - Implements consistent branding for authentication flows.
+ *
+ * Notes:
+ * - Shared components are styled in shared.css.
+ */
+
+/* Define color scheme for the website */
+:root {
+    --primary-color: #27627E;
+    --secondary-color: #409290;
+    --accent-color: #f1b24a;
+    --background-color: #eef5f5;
+    --color-white: #fff;
+}
+
+
+/* ---------- Navigation Menu ---------- */
+
+/* Styles for the main header container */
+header {
+    width: 90%;
+    margin: 0 auto;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    transition: all 0.4s ease;
+    z-index: 50;
+}
+
+/* Navigation container layout */
+header nav {
+    width: 100%;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+}
+
+/* Styles for the left section of the header */
+.header-left {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Base styles for all navigation links */
+header nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    align-self: center;
+}
+
+/* Styles for the unordered list within the navigation */
+.header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    font-family: 'Gudea', sans-serif;
+    margin-left: 50px;
+    color: var(--primary-color);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* Styles for each list item in the navigation */
+.header nav ul li {
+    list-style: none;
+    margin: 10px 15px;
+    list-style: none;
+    display: inline-block;
+    padding-bottom:2px; 
+    background: linear-gradient(#f1b24a,#f1b24a) center bottom;
+    background-size: 0% 1px;
+    background-repeat:no-repeat; 
+    transition: all 0.45s;
+    letter-spacing: 1px;
+}
+
+/* Hover effect for list items */
+.header nav ul li:hover {
+    background-size: 100% 2px;
+    cursor: pointer;
+}
+
+/* Styles for special header links, such as buttons */
+header nav .header-link {
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    z-index: 50;
+    background-color: var(--secondary-color);
+    color: var(--color-white);
+    padding: 17px 30px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    transition: ease 0.2s;
+    font-size: 14px;
+}
+
+/* Hover effect for header links */
+header nav .header-link:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+
+/* ---------- Logo Design ---------- */
+
+/* Container for the logo elements */
+.logo-container {
+    display: flex;
+}
+
+/* Left part of the heart-shaped logo */
+.logo-heart-left {
+    width: 2rem;
+    height: 4rem;
+    background-color: var(--primary-color);
+    border-radius: 1.25rem 1.25rem;
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+/* Right part of the heart-shaped logo */
+.logo-heart-right {
+    width: 2rem;
+    height: 4rem;
+    background-color: rgba(64, 146, 144, 0.9);
+    border-radius: 1.25rem 1.25rem;
+    transform: rotate(45deg);
+    position: relative;
+    left: 1.45rem;
+}
+
+/* Container for the site name, aligned with flexbox */
+.site-name {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 25%;
+    font-size: 35px;
+    color: var(--primary-color);
+    font-family: 'Gudea', sans-serif;
+    letter-spacing: 2px;
+}
+
+/* Styling for the span element inside the site name */
+.site-name span {
+    color: var(--secondary-color);
+}
+
+
+/* ---------- Intro Section Styling ---------- */
+
+/* Base styling for the intro section container */
+.intro-section {
+    width: 90%;
+    margin: 0 auto 30px;
+    min-height: 80vh;
+    background: var(--background-color); /* Fallback background color */
+    background: linear-gradient(90deg,
+        rgba(232,244,244,1) 0%, 
+        rgba(241,237,224,1) 53%, 
+        rgba(253,236,208,1) 100%); /* Smooth gradient background */
+    border-radius: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the section heading */
+.intro-section h2 {
+    font-size: 50px;
+    margin: 5px;
+    letter-spacing: 6px;
+}
+
+/* Fade-in effect for elements in the intro section from the left */
+.intro-section .fade-in-left-top {
+    margin-left: -700px;
+    opacity: 0;
+    animation: leftReveal 1.7s forwards ease;
+    animation-delay: 3.1s; /* Delay before the animation starts */
+    overflow: hidden;
+}
+
+/* Styling for the smaller heading in the intro section */
+.intro-section h3 {
+    width: 650px;
+    text-align: left;
+    font-size: 22px
+}
+
+/* Fade-in effect for elements in the intro section from the right */
+.intro-section .fade-in-right-top {
+    margin-right: -700px;
+    opacity: 0;
+    animation: rightReveal 1.7s forwards ease;
+    animation-delay: 3.1s; /* Delay before the animation starts */
+}
+
+/* Styling for links or buttons in the intro section */
+.intro-section a {
+    margin-top: 30px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 35px;
+}
+
+
+/* ---------- Main Section Styles ---------- */
+
+/* Base styles for the main content section */
+.main-section {
+    width: 80%;
+    margin: 70px auto;
+    padding: 50px 0;
+}
+
+/* Base styling for the section headings */
+.main-section h3 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Japanese section title */
+.section-title-jp {
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+/* English section title */
+.section-title-en {
+    margin: 0 auto -10px;
+    font-size: 23px;
+    letter-spacing: 1.5px;
+}
+
+/* Container for the heart decoration */
+.main-section .heart {
+    display: flex;
+    justify-content: center;
+    margin-left: -20px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+/* Shared styles for both the left and right sides of the heart */
+.heart-left,
+.heart .heart-right {
+    width: 1.5rem;
+    height: 3rem;
+    border-radius: 1.25rem 1.25rem;
+}
+
+/* Left side of the heart */
+.heart .heart-left {
+    background-color: var(--primary-color);
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+/* Right side of the heart */
+.heart .heart-right {
+    left: 1.05rem;
+    background-color: var(--secondary-color);
+    border-radius: 1.25rem 1.25rem;
+    transform: rotate(45deg);
+    position: relative;
+}
+
+/* Styling for the main section's paragraph */
+.main-section p {
+    width: 70%;
+    margin: 0 auto;
+    font-size: 19px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* ---------- Full-Width Section Styles ---------- */
+
+/* Base styles for the full-width section */
+.full-width-section {
+    width: 100%;
+    background-color: var(--background-color);
+    color: var(--primary-color);
+    padding: 70px 0;
+}
+
+/* Styling for the heading inside the full-width section */
+.full-width-section h3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+/* Container for facts displayed in a row */
+.full-width-section .facts {
+    margin-left: 25vw;
+    color: var(--accent-color);
+    font-size: 40px;
+    gap: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Aligns the heart decoration within the facts section */
+.full-width-section .heart {
+    align-self: center;
+}
+
+/* Left side of the heart */
+.full-width-section .heart-left {
+    background-color: #e1c290;
+    width: 1rem;
+    height: 2rem;
+}
+
+/* Right side of the heart */
+.full-width-section .heart-right {
+    background-color: var(--accent-color);
+    width: 1rem;
+    height: 2rem;
+    left: 0.7rem;
+}
+
+/* Styling for individual fact paragraphs */
+.full-width-section .facts p {
+    margin: 15px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Additional information styling inside the facts section */
+.full-width-section .facts .info {
+    font-size: 25px;
+    margin-left: 20px;
+    color: var(--primary-color);
+}
+
+/* Transition delay for the mental health treatment fact element */
+#mental-health-treatment-fact {
+    transition-delay: 0.3s;
+}
+/* Transition delay for the annual suicide statistics fact element */
+#annual-suicide-statistics-fact {
+    transition-delay: 0.6s;
+}
+
+
+/* ---------- 'How to' Section Styling ---------- */
+
+/* Styling for the heading above the "how-to" block */
+.section-heading-how-to {
+    margin-bottom: 70px;
+}
+
+/* General layout styling for the content blocks */
+.content-block {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Alternate layout for even-numbered content blocks */
+/* Reverses the order of child elements to create a zigzag layout */
+.content-block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Flexbox styling for individual content block items */
+.content-block div {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adjusts width for the first and last children of the content block */
+.content-block div:first-child {
+    width: 50%;  /* Sets the first child (typically text or an image) to half the width */
+}
+.content-block div:last-child {
+    width: 50%; /* Sets the last child (typically text or an image) to half the width */
+}
+
+/* Background color for step icons based on their class */
+.content-block .step-one {
+    background-color: var(--primary-color); /* Primary color for the first step */
+}
+.content-block .step-two {
+background-color: var(--secondary-color); /* Secondary color for the second step */
+}
+.content-block .step-three {
+background-color: var(--accent-color); /* Accent color for the third step */
+}
+
+/* Icon size and color for all steps */
+.content-block div i {
+    font-size: 160px;
+    color: var(--color-white);
+}
+
+/* Styling for headers inside content blocks */
+.content-block h3 {
+    font-size: 30px;
+    margin: 10px;
+}
+
+/* Styling for paragraphs inside content blocks */
+.content-block p {
+    font-size: 17px;
+}
+
+
+/* ---------- Sign-Up Section ---------- */
+
+/* Styling for the container of the sign-up section */
+.sign-up-section {
+    width: 80%;
+    margin: 40px auto;
+    padding: 120px 0;
+    background: linear-gradient(90deg,
+        rgba(253,236,208,1)  0%, 
+        rgba(241,237,224,1) 53%, 
+        rgba(232,244,244,1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: 50px;
+}
+
+/* Paragraph styling inside the sign-up section */
+.sign-up-section p {
+    font-size: 25px; 
+    font-weight: bold; 
+    width: 100%; 
+    text-align: center; 
+}
+
+/* Primary button styling in the sign-up section */
+.sign-up-section .primary-btn {
+    height: auto;
+    text-align: center; 
+    text-decoration: none;
+    padding: 25px 40px; 
+    border-radius: 30px; 
+}
+
+
+/* ---------- Keyframe Animations ---------- */
+
+/* Defines a reveal animation where elements slide in from the left */
+@keyframes leftReveal {
+    100% { margin-left: 0; opacity: 1;}
+}
+
+/* Defines a reveal animation where elements slide in from the right */
+@keyframes rightReveal {
+    100% { margin-right: 0; opacity: 1;}
+}
+
+
+/* ---------- Fade-In Animations (Left and Right) ---------- */
+
+/* Initial state for elements fading in from the left */
+.fade-in-left {
+    position: relative;
+    transform: translateX(-100px); /* Start off-screen to the left */
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+/* Active state for fade-in-left, triggers the animation */
+.fade-in-left.fade-in-left-active {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+/* Initial state for elements fading in from the right */
+.fade-in-right {
+    position: relative;
+    transform: translateX(100px);  /* Start off-screen to the right */
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+/* Active state for fade-in-right, triggers the animation */
+.fade-in-right.fade-in-right-active {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+
+/* ---------- Loader Section ---------- */
+
+/* Full-page overlay displayed while the loader is active */
+.loading-overlay {
+    width: 100%; /* Cover full width */
+    height: 100%; /* Cover full height */
+    position: absolute; /* Position it absolutely on top of the content */
+    top: 0; /* Align at the top */
+    left: 0; /* Align at the left */
+    background-color: var(--background-color);
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    z-index: 1000; 
+}
+
+/* Loader animation container */
+.loader {
+    display: inline-block;
+    width: 150px;
+    position: relative;
+    animation: rotation 1.5s infinite ease;
+    z-index: 1001;
+}
+
+/* Heart icon styles within the loader */
+.loading-overlay .heart {
+    margin-left: 30px; 
+}
+
+/* Left side of the heart */
+.loading-overlay .heart .heart-left {
+    width: 3rem;
+    height: 6rem; 
+    border-radius: 1.5rem 1.5rem; 
+    position: absolute; 
+}
+
+/* Right side of the heart */
+.loading-overlay .heart .heart-right {
+    width: 3rem;
+    height: 6rem;
+    border-radius: 1.5rem 1.5rem;
+    left: 2.2rem;
+}
+
+/* Smooth 360-degree rotation animation */
+@keyframes rotation {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ---------- Return to Top Button ---------- */
+
+/* Positioning and styling for the 'Return to Top' button */
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-color);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 50%;
+    display: none;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* Styling for the icon inside the button */
+#return-to-top i {
+    color: var(--color-white);
+    margin: 0;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect for the button */
+#return-to-top:hover {
+    background: #ecc688;
+}
+
+/* Hover effect for the icon inside the button */
+#return-to-top:hover i {
+    color: var(--color-white);
+    top: 37%;
+}
+
+
+/* ---------- Auth Container Styles (For login, admin login, and sign-up pages) ---------- */
+
+/* Main container for authentication pages, ensuring a centered layout with a gradient background */
+.auth-container {
+    width: 90%;
+    margin: 0 auto 30px;
+    min-height: 80vh;
+    background: linear-gradient(90deg, 
+        rgba(232,244,244,1) 0%, 
+        rgba(241,237,224,1) 53%, 
+        rgba(253,236,208,1) 100%);
+    border-radius: 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container for the admin authentication pages with a reversed gradient */
+.container-admin {
+    background: linear-gradient(90deg,
+        rgba(253,236,208,1)  0%, 
+        rgba(241,237,224,1) 53%, 
+        rgba(232,244,244,1) 100%);
+}
+
+/* ---------- Form Wrapper and Form Elements ---------- */
+/* Wrapper for the form inside the authentication container */
+.auth-container .form-wrapper {
+    width: 40%;
+    padding: 30px 0;
+    border-radius: 40px;
+    margin: 50px auto;
+    background-color: var(--color-white);;
+}
+
+/* Title styles for the form wrapper */
+.auth-container .form-wrapper h2 {
+    font-size: 35px;
+    margin: 20px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+/* Admin-specific title style inside the form */
+.auth-container .form-wrapper h2 .admin-title {
+    font-size: 19px;
+    margin: 0 auto -12px;
+    color: var(--accent-color);
+}
+
+/* Styling for the form itself (applies to the form container) */
+.auth-container form {
+    padding: 0 50px !important;
+    z-index: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* ---------- Input Field Styles ---------- */
+/* Container for each input field, ensuring proper positioning */
+.input-container {
+    position: relative;
+    margin: 22px 0;
+}
+
+/* Label styling inside the input container */
+.input-container label {
+    font-size: 15px;
+    color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    left:15px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    pointer-events: none;
+    z-index: 30;
+    transition: 0.5s;
+}
+
+/* Adjust label position when input container is focused */
+.input-container.focus label {
+    top: 0;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 11px;
+}
+
+/* Styles for span inside input container (optional visual cues) */
+.input-container span {
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    color: transparent;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* Focused state for span (visual cue for interaction) */
+.input-container.focus span:before,
+.input-container.focus span:after {
+    width: 50%;
+    opacity: 1;
+}
+
+/* Styles for the before and after pseudo-elements in the input container */
+.input-container span:before,
+.input-container span:after {
+    content: "";
+    position: absolute;
+    width: 10%;
+    opacity: 0;
+    transition: 0.3s;
+    height: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.input-container span:before {
+    left: 50%;  /* Positioned to the left */
+}
+.input-container span:after {
+    right: 50%; /* Positioned to the right */
+}
+
+/* Input field styles */
+.input {
+    width: 100%;
+    color: var(--secondary-color);
+    font-size: 17px;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--secondary-color);
+    background: none;
+    padding: 10px 20px 5px;
+    transition: 0.3s;
+}
+
+/* Styling for autofilled inputs (change appearance of autofilled text) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px var(--color-white) inset !important;
+  -webkit-text-fill-color: var(--secondary-color) !important;
+}
+
+/* Styles for the eye icon (password visibility toggle) */
+.form-wrapper form .input-container .eye {
+    right: 15px;
+    cursor: pointer;
+}
+
+/* Icon inside the input field */
+.input-container i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+}
+
+/* ---------- Form Button and Links ---------- */
+/* Styling for the submit button inside the form */
+.auth-container .form-wrapper button {
+    margin: 20px;
+}
+
+/* Styling for links under the form */
+.form-link {
+    margin: 20px auto;
+    color: var(--primary-color);
+}
+
+/* Styling for individual paragraphs inside the link container */
+.form-link p {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    font-size: 14px;
+}
+
+/* Adjusts the first paragraph */
+.form-link p:first-child {
+    margin-top: -20px;
+}
+
+/* Styling for individual links inside the form link */
+.form-link a {
+    margin: 0;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+/* Hover effect for links */
+.form-link a:hover {
+    text-decoration: underline;
+}

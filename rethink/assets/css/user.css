@@ -1,0 +1,4147 @@
+/**
+ * File Name: user_side.css
+ * Author: Moa Burke
+ * Date: 2024-12-17
+ * Description: Styles for the user-facing pages of the RETHINK project, 
+ * including mood tracking, goal setting, insights, and profile pages.
+ *
+ * Features:
+ * - Layout and design for user dashboards and interactive elements.
+ * - Responsive styling for mobile, tablet, and desktop views.
+ * - Consistent use of the user-specific color palette.
+ *
+ * Notes:
+ * - Some shared styles are located in shared.css.
+ */
+
+/* Define colors for the website */
+:root {
+    --primary-color: #27627E;
+    --secondary-color: #409290;
+    --accent-color: #f1b24a;
+    --background-color: #eef5f5;
+    --background-color-textarea: #f8f8f8;
+
+    --color-white: #fff;
+    --color-gray-1: #ddd;
+    --color-gray-2: #cdcdcd;
+    --color-gray-3: #A6A6A6;
+    --color-gray-4: #989898;
+    --color-gray-5: #6d6d6d;
+    --color-gray-6: #4d4d4d;
+    --color-soft-amber: #f1b14a6d;
+    --color-golden-tangerine: #f7a420;
+    --color-muted-teal: #40929099;
+    --color-red: #cb3d3d;
+
+    --great-mood-color: #812061; /* Color for Great mood */
+    --good-mood-color: #EB6694; /* Color for Good mood */
+    --okay-mood-color: #8BCCCA; /* Color for Okay mood */
+    --bad-mood-color: #9DC3E6; /* Color for Bad mood */
+    --awful-mood-color: #27627E; /* Color for Awful mood */
+}
+
+
+/* ---------- Shared among multiple sections ---------- */
+
+/* Main content wrapper styles */
+.main-wrapper {
+    padding-left: 200px;
+    padding-top: 100px;
+    height: 100%;
+}
+
+/* Styling for main heading (h2) in the main wrapper */
+.main-wrapper h2 {
+    position: fixed;
+    font-size: 30px;
+    top: 2px;
+    left: 250px;
+    text-transform: uppercase;  
+    z-index: 25;
+}
+
+/* Styling for subheading (h3) in the main wrapper */
+.main-wrapper h3 {
+    margin: 0;
+    font-size: 25px;
+    color: var(--primary-color);
+}
+.main-wrapper h3 span {
+    display: flex;
+    flex-direction: column;
+}
+.main-wrapper h3 .english-title {
+    margin-bottom: 20px;
+}
+
+/* Navigation list item styling within main wrapper */
+.main-wrapper nav ul li {
+    transition: ease 0.2s;
+    background: none;
+}
+
+
+/* ---------- user_home.php ---------- */
+
+/* Container for the dashboard greeting section */
+.dashboard-greeting {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Styling for the heading inside the dashboard greeting section */
+.dashboard-greeting h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+/* Wrapper for the entire user dashboard layout */
+.user-dashboard-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Left section of the dashboard for user-related content */
+.dashboard-left-section {
+    width: 58%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* -- Mood Registration / Past Week's Mood Registration -- */
+/* Weekly Overview Section */
+.dashboard-left-section .weekly-overview {
+    display: block;
+    text-align: center;
+    position: relative;
+    border: 3px solid var(--background-color);
+    margin: 0;
+    border: none;
+}
+
+/* Mood Registration Container - Displays the mood selection options */
+.dashboard-left-section .mood-registration-container {
+    height: 200px;
+    border-radius: 20px;
+    padding: 20px 0 0;
+}
+
+/* Mood Options Container - Centers the mood options within the container */
+.dashboard-left-section .mood-registration-container .mood-options {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Mood Item - Adds spacing between each mood item */
+.dashboard-left-section .mood-registration-container .mood-item {
+    margin: 0 10px;
+}
+
+/* Additional margin for mood items */
+.dashboard-left-section .mood-registration-container .mood-item {
+    margin: 10px;
+}
+
+/* Hides the input elements within the mood items */
+.dashboard-left-section .mood-registration-container .mood-item input {
+    display: none;
+}
+
+/* Styling for the emoji inside each mood item */
+.dashboard-left-section .mood-registration-container .mood-item .mood-emoji {
+    font-size: 85px;
+    padding: 0 5px;
+}
+
+/* Hover effect for the mood emoji */
+.dashboard-left-section .mood-registration-container .mood-item .mood-emoji:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Hover effect for the text inside the mood emoji */
+.dashboard-left-section .mood-registration-container .mood-item .mood-emoji:hover .mood-text {
+    opacity: 0.8;
+}
+
+/* Styling for the text inside the mood item */
+.dashboard-left-section .mood-registration-container .mood-item .mood-text {
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+/* Container for user progress section */
+.dashboard-left-section .user-progress-section,
+.user-progress-section {
+    display: flex;
+    margin: 20px auto;
+}
+
+/* Weekly post status styling */
+.dashboard-left-section .user-progress-section .weekly-post-status,
+.weekly-post-status {
+    width: 80%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    position: relative;
+    align-self: center;
+    z-index: 1;
+}
+
+/* Line in the middle of the weekly post status */
+.dashboard-left-section .user-progress-section .weekly-post-status:after,
+.weekly-post-status:after {
+    position: absolute;
+    left: -5%;
+    top: 50%;
+    height: 3px;
+    background: var(--secondary-color);
+    content: "";
+    width: 100%;
+    display: block;
+    z-index: -5;
+    transform: translateY(-50%);
+}
+
+/* Daily post status circle */
+.dashboard-left-section .user-progress-section .daily-post-status,
+.daily-post-status {
+    width: 45px;
+    height: 45px;
+    margin: 30px 0 30px;
+    border: 2px var(--secondary-color) solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Icon inside the daily post status circle */
+.dashboard-left-section .user-progress-section .daily-post-status i {
+    font-size: 32px;
+}
+
+/* Styles for a post not made (empty day) */
+.post-not-made {
+    border: 2px var(--secondary-color) solid !important;
+    background-color: var(--color-white) !important;
+}
+
+/* Styles for a day without a post */
+.day-without-post {
+    background-color: var(--color-white) !important;
+    border: 2px var(--color-gray-2) solid !important;
+}
+
+/* Icon styles for a day without a post */
+.day-without-post .fa-xmark {
+    color: var(--color-gray-2);
+}
+
+/* Checkmark and X icon styles */
+.fa-check, .fa-xmark {
+    font-size: 43px;
+    color: var(--color-white);
+    align-self: center;
+}
+
+/* Day of the week label styling */
+.dashboard-left-section .user-progress-section .day-of-week,
+.day-of-week {
+    font-size: 15px;
+    color: var(--secondary-color);
+    position: absolute;
+    left: 50%;
+    top: 140%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for consecutive days label */
+.dashboard-left-section .user-progress-section .consecutive-days,
+.consecutive-days {
+    width: 20%;
+    align-self: center;
+    font-size: 30px;
+}
+
+/* Font size for the consecutive days count */
+.dashboard-left-section .user-progress-section .consecutive-days p {
+    font-size: 40px;
+    color: var(--secondary-color);
+}
+
+/* Styling for the second part of the consecutive days text */
+.dashboard-left-section .user-progress-section .consecutive-days p :last-child {
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+/* Styling for the max consecutive days section */
+.dashboard-left-section .user-progress-section .max-consecutive-days,
+.max-consecutive-days {
+    width: 75%;
+    margin: 5px auto 15px;
+    color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+}
+
+/* -- Today's Goals -- */
+/* Font size for max consecutive days */
+.dashboard-left-section .user-progress-section .max-consecutive-days p ,
+.max-consecutive-days p {
+    font-size: 20px;
+    margin-top: -7px;
+}
+
+/* Styling for the goals section wrapper */
+.dashboard-left-section .today-goals-section {
+    width: 99%;
+    margin: 40px auto;
+}
+
+/* Styling for the goals header */
+.dashboard-left-section .goals-header {
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+/* Styling for the link in the goals header */
+.dashboard-left-section .goals-header a {
+    font-size: 13px;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Hover effect for the goals header link */
+.dashboard-left-section .goals-header a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the user goals list wrapper */
+.dashboard-left-section .user-goals-list-wrapper,
+.user-goals-list-wrapper {
+    text-align: center;
+}
+
+/* Styling for individual goal cards */
+.dashboard-left-section .goal-card,
+.goal-card  {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Styling for the goal card title */
+.dashboard-left-section .goal-card h4,
+.goal-card h4 {
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+
+/* Styling for the goal card name */
+.dashboard-left-section .goal-card h3,
+.goal-card h3 {
+    font-size: 17px !important;
+    font-weight: 500;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/* Styling for the goal card content */
+.dashboard-left-section .goal-card-content,
+.goal-card-content {
+    width: 150px;
+    margin: 10px 10px;
+    padding: 15px 10px;
+    border-radius: 20px;
+    color: var(--color-gray-5);
+    background-color: var(--color-white);
+    box-shadow: 0px 5px 10px 1px rgb(0 0 0 / 20%);
+}
+
+/* Styling for the goal icon inside the card */
+.dashboard-left-section .goal-card-content .goal-icon,
+.goal-icon {
+    font-size: 45px;
+    color:  var(--primary-color);
+}
+
+/* Styling for the consecutive days counter text */
+.dashboard-left-section .goal-card-content .consecutive-days-counter p,
+.goal-card-content .consecutive-days-counter p {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: var(--color-gray-3);
+}
+
+/* Styling for the goal status circle */
+.dashboard-left-section .goal-card-content .goal-status-circle {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 2px solid var(--color-gray-2);
+    position: relative;
+}
+
+/* Styling for the icon inside the goal status circle */
+.dashboard-left-section .goal-card-content .goal-status-circle i {
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for the completed goal status circle */
+.dashboard-left-section .goal-card-content .goal-status-circle-completed {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: var(--good-mood-color);
+    border: 2px solid var(--good-mood-color);
+    position: relative;
+}
+
+/* Styling for the icon inside the completed goal status circle */
+.dashboard-left-section .goal-card-content .goal-status-circle-completed i {
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for the no-goals message section */
+.no-goals-message {
+    width: 90%;
+    height: 280px;
+    margin: 5px auto;
+    border: 1px dotted var(--color-gray-3);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+/* Styling for the heading in the no-goals message */
+.no-goals-message h5 {
+    margin: 10px auto;
+    align-self: center;
+    font-size: 15px;
+    color: var(--primary-color);
+}
+
+/* Styling for the paragraph in the no-goals message */
+.no-goals-message p {
+    margin: 0;
+    align-self: center;
+    font-size: 15px;
+    color: var(--color-gray-3);
+}
+
+/* Styling for the "Set Goal" link in the no-goals message */
+.no-goals-message a {
+    margin: 30px auto;
+    width: 160px;
+    height: 50px;
+    background-color: var(--accent-color);
+    text-align: center;
+    border-radius: 20px;
+    color: var(--color-white);
+    text-decoration: none;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: ease 0.2s;
+}
+
+/* Hover effect for the "Set Goal" link */
+.no-goals-message a:hover {
+    background-color: var(--secondary-color);
+}
+
+/* -- Feed Section -- */
+/* Right section of the dashboard, usually for posts or other information */
+.dashboard-right-section {
+    width: 40%;
+    height: 100vh;
+    overflow: auto; 
+}
+
+/* Styling for the top section inside the posts feed wrapper */
+.dashboard-right-section .feed-container .post-section {
+    background-color: var(--background-color);
+    border-radius: 20px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+/* Feed (Everyone's Talk Section / みんなのトーク) */
+.feed-container {
+    height: 100vh;
+    width: 100%;
+    overflow: auto; 
+}
+
+/* Post section container */
+.feed-container .post-section {
+    width: 98%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Title styling for post section */
+.feed-container .post-section h3 {
+    margin: 0 auto;
+}
+
+/* Actions section within the post */
+.feed-container .post-section .post-actions {
+    width: 95%;
+    margin: 0 auto;
+}
+
+/* Mood selector container styling */
+.feed-container .post-section .post-actions .mood-selector {
+    margin: 0 auto;
+    gap: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Individual mood item styling */
+.feed-container .post-section .post-actions .mood-selector .mood-item {
+    margin: 15px 0;
+}
+
+/* Hide radio button input for mood items */
+.feed-container .post-section .post-actions .mood-selector .mood-item input {
+    display: none;
+}
+
+/* Emoji styling for mood items */
+.feed-container .post-section .post-actions .mood-selector .mood-item .mood-emoji {
+    font-size: 45px;
+    padding: 0;
+}
+
+/* Hover effect for mood emoji */
+.feed-container .post-section .post-actions .mood-selector .mood-item .mood-emoji:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Post input area styling */
+.feed-container .post-section .post-actions .post-input-wrapper {
+    width: 95%;
+    margin: 0 auto;
+    border: 20px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Textarea for user input styling */
+.feed-container .post-section .post-actions .post-input-wrapper textarea {
+    width: 100%;
+    height: 100px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--color-gray-2);
+    border-radius: 20px;
+    background-color: var(--background-color-textarea);
+    font-size: 15px;
+    resize: none;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+/* Focused textarea styling */
+.feed-container .post-section .post-actions .post-input-wrapper textarea:focus {
+    border:2px solid var(--color-gray-2);
+    outline:0;
+}
+
+/* Submit button wrapper styling */
+.feed-container .post-section .post-actions .post-submit-wrapper {
+    width: 95%;
+    margin: 5px auto;
+}
+
+/* Styling for the submit button */
+.feed-container .post-section .post-actions .post-submit-wrapper .button {
+    width: 90px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    border: none;
+    border-radius: 15px;
+    transition: ease 0.2s;
+    float: right;
+}
+
+/* Hover effect for submit button */
+.feed-container .post-section .post-actions .post-submit-wrapper .button:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Empty state styling for the feed */
+.feed-container .empty {
+    margin: 40px auto;
+    width: 90%;
+    padding: 160px 0;
+    border: 1px dotted var(--color-gray-3);
+    border-radius: 20px;
+    text-align: center;
+    color: var(--color-gray-4);
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* Hide the error message by default */
+.post-error-message {
+    display: none;
+}
+
+/* Show the error message when the display-error class is applied */
+.display-error {
+    display: block !important;
+}
+
+/* Styling for the error message content */
+.error-message-content {
+    width: 98%;
+    margin: 10px 0;
+    padding: 20px 0;
+    background-color: #e863632b !important; /* Semi-transparent red background */
+    border-radius: 20px;
+    color: var(--primary-color);
+}
+
+/* Styling for the error message title */
+.error-message-title {
+    width: 65%;
+    margin: 10px auto 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Styling for the error message title's <h4> element */
+.error-message-title h4 {
+    margin-bottom: 5px;
+    margin-top: 25px;
+}
+
+/* Styling for the error message details */
+.error-message-details {
+    width: 65%;
+    margin: 5px auto;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+/* Add margins to the paragraphs in the error message details */
+.error-message-details p {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+/* Styling for the links in the error message details */
+.error-message-details a {
+    color: var(--primary-color);
+}
+
+/* Hover effect for the links in the error message details */
+.error-message-details a:hover {
+    color: var(--accent-color);
+}
+
+
+/* Main feed container styling */
+.feed-container .posts-feed {
+    width: 98%;
+}
+
+/* Styling for the post item container in the feed */
+.posts-feed .post-item {
+    width: 100%;
+    margin: 10px auto;
+    background-color: var(--background-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Hover effect for post item */
+.posts-feed .post-item:hover {
+    background-color: var(--background-color);
+}
+
+/* Header section of the post item */
+.posts-feed .post-item .post-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Hidden button in the post header */
+.post-item .post-header .hidden-button {
+    display: none;
+}
+
+/* Styling for the emoji in the post header */
+.post-item .post-header .post-emoji  {
+    font-size: 50px;
+    margin-right: 15px;
+    margin-top: 5px;
+    position: relative;
+}
+
+/* Edit button position in the post header */
+.post-item .post-header .edit-button-wrapper {
+    position: absolute;
+    right: 115px;
+}
+
+/* Styling for edit and delete buttons */
+.post-item .post-header .edit-button-wrapper button,
+.delete-button-wrapper button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Icon style for edit and delete buttons */
+.post-item .post-header .edit-button-wrapper button i,
+.delete-button-wrapper button i{
+    font-size: 20px;
+    color: var(--color-gray-5);
+}
+
+/* Hover effect for the edit button */
+.post-item .post-header .edit-button-wrapper button:hover i {
+    cursor: pointer;
+    color: var(--color-gray-6)
+}
+
+/* Styling for the delete button in the post header */
+.post-item .post-header .delete-button-wrapper {
+    position: absolute;
+    color: var(--color-gray-5);
+    right: 80px;
+    margin: 0;
+    font-size: 20px;
+}
+
+/* Styling for the delete button  */
+.post-item .post-header .delete-button-wrapper #delete-post-button {
+    margin: 0;
+    position: initial;
+}
+
+/* Hover effect for the trash icon */
+.post-item .post-header .delete-button-wrapper .fa-trash:hover {
+    cursor: pointer;
+    color: var(--color-gray-6)
+}
+
+/* Removes top padding from the modal main in the post header */
+.post-item .post-header .modal-main {
+    padding-top: 0 !important;
+}
+
+/* Styling for the post author section */
+.post-item .post-author,
+.post-item .comment-author {
+    display: flex;
+    margin: 20px;
+}
+
+/* Profile image of the post author */
+.post-item .post-author .author-profile-img,
+.post-item .comment-author .author-profile-img {
+    width: 40px;
+    height: 40px;
+}
+
+/* Style for the profile image (round and covers the space) */
+.post-item .post-author .author-profile-img img,
+.post-item .comment-author .author-profile-img img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: var(--color-white);
+}
+
+/* Info section for the post author */
+.post-item .post-author .author-info,
+.post-item .comment-author .author-info {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Styling for the text in the author info section */
+.post-item .post-author .author-info p,
+.post-item .comment-author .author-info p {
+    margin: 0;
+}
+
+/* Username styling in the author info section */
+.post-item .post-author .author-info .author-username,
+.post-item .comment-author .author-info .author-username {
+    font-size: 12px;
+    color: var(--color-gray-5);
+}
+
+/* Time elapsed since the post was made */
+.post-item .post-author .author-info .post-time-elapsed,
+.post-item .comment-author .author-info .post-time-elapsed {
+    font-size: 10px;
+    color: var(--color-gray-5);
+}
+
+/* Mood-Specific Emoji Colors */
+.posts-feed .Great .post-emoji {
+    color: var(--great-mood-color);
+}
+.posts-feed .Good .post-emoji {
+    color: var(--good-mood-color);
+}
+.posts-feed .Okay .post-emoji {
+    color: var(--okay-mood-color);
+}
+.posts-feed .Bad .post-emoji {
+    color: var(--bad-mood-color);
+}
+.posts-feed .Awful .post-emoji {
+    color: var(--awful-mood-color);
+}
+
+/* Post and Comment Wrappers */
+.post-content-wrapper,
+.comment-content-wrapper {
+    width: 85%;
+    margin: 20px auto;
+    display: flex;
+}
+.post-content-wrapper .post-text-content {
+    font-size: 15px;
+}
+
+/* Post Interactions Section */
+.post-item .post-interactions {
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px auto 0;
+    border-top: 0.5px solid var(--color-gray-2);
+    border-bottom: 0.5px solid var(--color-gray-2);
+}
+
+/* Post Likes Section */
+.post-item .post-likes {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Spacing between items */
+}
+.post-item .post-likes p {
+    font-size: 12px;
+    color: var(--color-gray-5); /* Grey color for like count */
+}
+.post-item .post-likes a .fa-regular {
+    color: var(--color-gray-5); /* Default like icon color */
+}
+.post-item .post-likes a .fa-regular:hover {
+    color: var(--color-red); /* Like icon color on hover */
+}
+.post-item .post-likes a .fa-solid {
+    color: var(--color-red); /* Filled like icon color */
+}
+.post-item .post-likes a i {
+    font-size: 20px; /* Icon size */
+}
+
+/* Post Comments Section */
+.post-item .post-comments {
+    display: flex;
+    align-items: center;  
+    gap: 5px; /* Spacing between icon and text */
+}
+.post-item .post-comments i {
+    color: var(--color-gray-5); /* Default comment icon color */
+    font-size: 20px; /* Icon size */
+}
+.post-item .post-comments p {
+    font-size: 12px;
+    color: var(--color-gray-5); /* Grey color for comment count */
+}
+
+/* Comment Section Layout */
+.comment-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment-section .comment-main {
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+.comment-section .comment-main .comment-author {
+    margin: 0; /* Reset margin */
+}
+.comment-section .comment-main .comment-input {
+    width: 100%;
+    margin: 8px 10px 0;
+}
+.comment-section .comment-main .comment-input textarea {
+    width: 100%;
+    height: 55px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--color-gray-2);
+    border-radius: 20px;
+    background-color: var(--background-color-textarea);
+    font-size: 15px;
+    resize: none;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+}
+.comment-section .comment-main .comment-input textarea:focus {
+    border:2px solid var(--color-gray-2);
+    outline:0;
+}
+
+/* Comment Submit Button */
+.comment-section .comment-submit {
+    position: relative;
+}
+.comment-section .comment-submit .button {
+    width: 40px;
+    height: 40px;
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    transition: ease 0.2s;
+    float: right;
+}
+.comment-section .comment-submit .button:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+.comment-section .comment-submit:hover .button {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+.comment-section .comment-submit i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: var(--color-white);
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+/* Comments Display Section */
+.comments-display {
+    width: 90%;
+    margin: 0 auto;
+}
+.comments-display .arrow {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--accent-color); /* Arrow color */
+    float: right;
+}
+.comments-display .arrow:hover {
+    cursor: pointer;
+    text-decoration: underline; /* Underline on hover */
+}
+.comments-display .arrow i {
+    padding: 0 5px; /* Spacing for arrow icon */
+}
+
+/* Hidden Comments */
+.comments-hidden .comments-list {
+    display: none; /* Hide comments when collapsed */
+}
+
+/* Comment List and Items */
+.comments-list {
+    width: 100%;
+    margin: 30px auto;
+}
+.comments-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; /* Vertical layout */
+    gap: 20px; /* Spacing between comments */
+}
+.comments-container .comment-item {
+    display: flex;
+    flex-direction: column; /* Comment details stacked */
+    background-color: var(--color-white); /* Comment background */
+    border-radius: 20px; /* Rounded corners */
+}
+.comments-container .comment-item .comment-author {
+    margin-bottom: 0; /* Reset margin */
+}
+.comments-container .comment-item .comment-text-content {
+    font-size: 12px;
+}
+
+
+/* ---------- my_page.php ---------- */
+
+/* -- Alert Section -- */
+/* Alert styling in the left section of My Page */
+.mypage-left-section .alert {
+    width: 75%;
+    margin-top: 0;
+}
+
+/* Styling for the display text in the left section of My Page */
+.mypage-left-section .message-text {
+    margin: 40px 0;
+}
+
+/* -- User's Post on Feed Section -- */
+/* Right section of the My Page layout */
+.mypage-right-section {
+    width: 49%;
+    height: 100px;
+}
+
+/* Styling for hidden posts in the posts feed */
+.posts-feed .hidden-post {
+    background-color: #e863632b !important;
+}
+
+/* Styling for guideline violation posts (when a post is hidden due to violations) */
+.posts-feed .post-hidden-guideline-violation {
+    width: 55%;
+    margin: 20px auto 10px;
+    padding: 0 20px;
+    font-size: 12px;
+    background-color: var(--color-white);
+    border-radius: 20px;
+    border: 2px solid var(--color-red);
+}
+
+/* Adjust the positioning of the list inside the guideline violation message */
+.posts-feed .post-hidden-guideline-violation ul {
+    margin-top: -11px;
+}
+
+/* Styling for reevaluation request section */
+.posts-feed .reevaluation-request {   
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Styling for the reevaluation request icon */
+.post-item .reevaluation-request i {
+    color: var(--color-red);
+    font-size: 30px;
+}
+
+/* Styling for the reevaluation request message text */
+.post-item .reevaluation-request p {
+    color: var(--color-red);
+    font-size: 12px;
+    margin: 0;
+    margin-top: 5px;
+}
+
+/* Styling for the reevaluation request button */
+.posts-feed .reevaluation-request button {
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+    transition: all 0.3s;
+}
+
+/* Change button background color on hover */
+.posts-feed .reevaluation-request button:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Styling for reevaluation requested confirmation */
+.post-item .reevaluation-requested {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ---------- register_mood.php ---------- */
+
+/* -- Progress Bar Section -- */
+/* Wrapper for the multi-step progress bar */
+.multi-step-progress-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 0px;
+    text-align: center;
+}
+
+/* Container for all progress bar steps */
+#stepProgressBar {
+    display: flex;
+    width: 900px;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* Individual progress step */
+.multi-step-progress-wrapper .progress-step {
+    width: 55px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Text under each progress step */
+.multi-step-progress-wrapper .progress-step-text {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: 12px;
+    transition: ease 0.3s;
+}
+
+/* Highlight the current step text */
+.multi-step-progress-wrapper .progress-step-text .current-step {
+    color: var(--accent-color);
+}
+
+/* Bullet indicator for each progress step */
+.multi-step-progress-wrapper .progress-step-bullet {
+    height: 20px;
+    width: 20px;
+    margin: 0 auto;
+    border-radius: 100%;
+    border: 1px solid var(--primary-color);
+    font-size: 12px;
+    position: relative;
+    transition: background-color 500ms;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Text inside the bullet */
+.multi-step-progress-wrapper .progress-step-bullet p {
+    padding-top: 2px;
+}
+
+/* Highlight the current step bullet */
+.multi-step-progress-wrapper .current-bullet {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    transition: 500ms;
+}
+
+/* Style for completed steps */
+.multi-step-progress-wrapper .completed-step {
+    color: var(--color-white);
+    background-color: var(--primary-color);   
+}
+
+/* Connector between completed steps */
+.multi-step-progress-wrapper .completed-step::after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    width: 60px;
+    background-color: var(--primary-color);
+    right: -67px;
+    bottom: 10px;
+}
+
+/* -- Slider Section -- */
+/* Mood Registration Slider */
+.mood-registration-slider {
+    max-width: 1050px;
+    position: relative;
+    margin: auto;
+    height: 500px;
+}
+
+/* Style for each slide in the mood registration slider */
+.mood-registration-slider .slide {
+    object-fit: cover;
+    width: 100%;
+    height: 500px;
+    border-radius: 40px;
+}
+
+/* -- Buttons in Slider  -- */
+/* Styling for the previous and next slide buttons */
+.mood-registration-slider .previous-slide-button, .mood-registration-slider .next-slide-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 45px;
+    transition: 0.3s ease;
+    border-radius: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+/* Disable button styling */
+.mood-registration-slider button:disabled {
+  color: var(--color-gray-2);
+}
+.mood-registration-slider button:disabled:hover {
+  color: var(--color-gray-2);
+  cursor: default;
+}
+
+/* Positioning for previous and next slide buttons */
+.mood-registration-slider .previous-slide-button {
+    left: -4%;
+}
+.mood-registration-slider .next-slide-button {
+    right: -4%;
+}
+
+/* Hover effect for buttons */
+.mood-registration-slider .previous-slide-button:hover,
+.mood-registration-slider .next-slide-button:hover {
+    color: var(--secondary-color);
+}
+
+/* Animation for sliding and fading in */
+.mood-registration-slider .slide {
+    animation-name: fade;
+    animation-duration: 0.5s;
+}
+
+/* General styling for mood registration items */
+.mood-registration-slider .entity-item {
+    margin: 10px;
+    width: 100px;
+    display: block;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/* Icon styling inside mood registration items */
+.mood-registration-slider .entity-item .fa-solid {
+    font-size: 35px;
+}
+
+/* Styling for text inside mood registration items */
+.mood-registration-slider .entity-item p {
+    margin: 7px auto;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0px;
+    border: 1px solid var(--color-gray-2);
+    border-radius: 20px;
+    color: var(--color-gray-4);
+}
+
+/* Additional padding for spans inside the paragraph */
+.mood-registration-slider .entity-item p span {
+    padding: 5px;
+}
+
+/* Set the font size for text inside mood registration items */
+.mood-registration-slider .entity-text {
+    font-size: 10px;
+}
+
+/* Mood Selector Step */
+.mood-selector-step {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Styling for the heading of the mood selector step */
+.mood-selector-step h2 {
+    padding: 15px;
+}
+
+/* -- Date Selector Section -- */
+/* Date selector styling */
+.mood-selector-step .date-selector {
+    margin: 20px auto 20px;
+}
+
+/* Styling for the date input */
+.mood-selector-step .date-selector input {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    padding: 0 10px;
+    font-size: 15px;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+/* Customizes the date input calendar icon with padding adjustments and a custom SVG in WebKit browsers. */ 
+::-webkit-calendar-picker-indicator {
+    padding: 5px 5px 7px 10px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%23bbbbbb" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+}
+
+/* Focus state for date input */
+.mood-selector-step .date-selector input:focus {
+    border:none;
+    border-bottom: 2px solid var(--accent-color);
+    outline:0;
+}
+
+/* -- Mood Selector Section -- */
+/* Mood selector layout */
+.mood-selector-step .mood-selector {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for the mood emoji element */
+.mood-emoji {
+    font-size: 100px;
+    margin: 0;
+    padding: 0 15px;
+}
+
+/* Styling for the mood text container */
+.mood-text {
+    margin: 0;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adjusts the opacity of the font-awesome regular icons inside mood emoji */
+.mood-emoji .fa-regular {
+    opacity: 0.6;
+}
+
+/* Hover effect for mood emoji */
+.mood-selector-step .mood-selector .mood-option .mood-emoji:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Styling for each mood option */
+.mood-selector-step .mood-option {
+    margin: 10px;
+}
+
+/* Hiding the actual radio button input */
+.mood-selector-step .mood-option input {
+    display: none;
+}
+
+/* Styling for mood label */
+.mood-selector-step .mood-label {
+    margin: 0;
+    margin-top: -10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* -- Common Styles for All Slider Pages -- */
+/* Hover effect for various selector labels */
+.company-selector-step label:hover,
+.activity-selector-step label:hover,
+.location-selector-step label:hover,
+.food-selector-step label:hover,
+.weather-selector-step label:hover,
+.goal-selector-step .goal-selector .goal p:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* Styling for selected items */
+.selected-feeling,
+.selected-activity,
+.selected-company,
+.selected-location,
+.selected-food,
+.selected-weather {
+    background-color: var(--color-muted-teal);
+    border: none;
+}
+
+/* Styling for selected item text */
+.selected-feeling p,
+.selected-activity p,
+.selected-company p,
+.selected-location p,
+.selected-food p,
+.selected-weather p {
+    color: var(--color-white) !important;
+}
+
+/* Styling for icons of selected items */
+.selected-activity .fa-solid,
+.selected-company .fa-solid,
+.selected-location .fa-solid ,
+.selected-food .fa-solid ,
+.selected-weather .fa-solid {
+    color: var(--color-white);
+}
+
+/* -- Feeling Selector Section -- */
+/* Feeling Selector Step */
+.feeling-selector-step {
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* Feeling selector container for aligning and wrapping feelings */
+.feeling-selector-step .feeling-selector {
+    width: 1050px;
+    margin: 35px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Wrapper for large feeling selectors */
+.feeling-selector-step .feelings-wrapper-large {
+    margin: 20px auto;
+}
+
+/* Wrapper for maximum size feeling selectors */
+.feeling-selector-step .feelings-wrapper-max {
+    margin: 45px auto;
+}
+
+/* Layout for positive, neutral, and negative feelings */
+.positive-feeling, 
+.neutral-feeling, 
+.negative-feeling {
+    margin: 0;
+    padding: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 280px;
+    height: 315px;
+}
+
+/* Label styling within positive, neutral, and negative feelings */
+.positive-feeling label, 
+.neutral-feeling label, 
+.negative-feeling label {
+    margin: 0 10px;
+}
+
+/* Wrapper for extra-large feeling selectors */
+.feeling-selector-step .extra-large {
+    margin: 20px auto;
+}
+
+/* Styling for maximum size feeling items */
+.feeling-selector-step .max {
+    margin: 20px auto;
+    font-size: 12px;
+    height: 160px  !important;
+}
+
+/* Margin styling for feelings in extra-large selectors */
+.feeling-selector-step .extra-large .feeling{
+    margin: 7px auto;
+}
+
+/* Styling for feelings in maximum size selectors */
+.feeling-selector-step .max .feeling{
+    width: 76px;
+}
+
+/* Layout for feeling items */
+.feeling-selector-step .feeling-item {
+    margin: 10px auto;
+    width: 110px;
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+}
+
+/* Styling for the feeling item text and border */
+.feeling-selector-step .feeling-item p {
+    margin: 6px auto;
+    padding: 16px;
+    color: var(--color-gray-4);
+    border-radius: 20px;
+    border: 1px solid var(--color-gray-2);
+    transition: ease 0.2s;
+}
+
+/* Hover effect for feeling item text */
+.feeling-selector-step .feeling-item p:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+/* -- Activity Selector Section -- */
+/* Layout for activity selector */
+.activity-selector-step {
+    width: 85%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+/* Flexbox layout for activity items */
+.activity-selector {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Styling for large activity items */
+.activity-selector-step .large {
+    width: 100%;
+}
+
+/* Styling for extra-large activity items */
+.activity-selector-step .extra-large .activity-item {
+    width: 79px;
+}
+
+/* Margin and styling for max-sized activity items */
+.activity-selector-step .max .activity-item {
+    margin: 5px 10px;
+}
+.activity-selector-step .max .activity-item .fa-solid {
+    font-size: 29px;
+}
+.activity-selector-step .max .activity-item p {
+    padding: 8px 0;
+}
+.activity-selector-step .max .activity-item p span {
+    padding: 5px 5px 0;
+}
+
+/* -- Company Selector Section -- */
+/* Layout for company selector */
+.company-selector-step {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Flexbox layout for company items */
+.company-selector {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    align-self: center;
+    margin: 30px auto;
+}
+
+/* Layout for large company selector */
+.company-selector-step .large {
+    width: 60%;
+}
+
+/* Layout for extra-large company selector */
+.company-selector-step .extra-large {
+    width: 70%;
+}
+
+/* Layout for max-sized company selector */
+.company-selector-step .max {
+    margin: 10px auto;
+    width: 79%;
+}
+
+/* -- Location Selector Section -- */
+/* Layout for location selector */
+.location-selector-step {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Flexbox layout for location items */
+.location-selector {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    align-self: center;
+    margin: 30px auto;
+}
+
+/* Layout for large location selector */
+.location-selector-step .large {
+    width: 60%;
+}
+
+/* Layout for extra-large location selector */
+.location-selector-step .extra-large {
+    width: 70%;
+}
+
+/* Layout for max-sized location selector */
+.location-selector-step .max {
+    margin: 10px auto;
+    width: 79%;
+}
+
+/* -- Food Selector Section -- */
+/* Layout for food selector */
+.food-selector-step {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Flexbox layout for food items */
+.food-selector {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    align-self: center;
+    margin: 30px auto;
+}
+
+/* Layout for large food selector */
+.food-selector-step .large {
+    width: 60%;
+}
+
+/* Layout for extra-large food selector */
+.food-selector-step .extra-large {
+    width: 70%;
+}
+
+/* Layout for max-sized food selector */
+.food-selector-step .max {
+    margin: 10px auto;
+    width: 79%;
+}
+
+/* -- Weather Selector Section -- */
+/* Layout for weather selector */
+.weather-selector-step {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Flexbox layout for weather items */
+.weather-selector {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    align-self: center;
+    margin: 30px auto;
+}
+
+/* Layout for large weather selector */
+.weather-selector-step .large {
+    width: 60%;
+}
+
+/* Layout for extra-large weather selector */
+.weather-selector-step .extra-large {
+    width: 70%;
+}
+
+/* Layout for max-sized weather selector */
+.weather-selector-step .max {
+    margin: 10px auto;
+    width: 79%;
+}
+
+/* -- Goal Selector Section -- */
+/* Layout for goal selector */
+.goal-selector-step {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Flexbox layout for goal items */
+.goal-selector {
+    width: 747px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Styling for 0 set goals */
+.total-set-goals-0 {
+    justify-content: center;
+    margin-top: 40px;
+    border: 1px dotted var(--color-gray-3);
+    padding: 60px 0;
+    border-radius: 20px;
+}
+
+/* Styling for 1 set goal */
+.total-set-goals-1 {
+    margin: 55px auto;
+    justify-content: center;
+}
+
+/* Styling for 2 set goal */
+.total-set-goals-2 {
+    margin: 55px auto;
+    flex-direction: column;
+}
+.total-set-goals-2 .goal {
+    margin: 15px auto;
+}
+
+/* Styling for 3 set goal */
+.total-set-goals-3 {
+    flex-direction: column;
+}
+.total-set-goals-3 .goal {
+    margin: 15px auto;
+}
+
+/* Styling for goal item with no set goals */
+.goal-selector .no-set-goals {
+    font-size: 15px;
+    color: var(--color-gray-3);
+}
+
+/* Styling for individual goal items */
+.goal-selector .goal-item {
+    width: 350px;
+    margin: 10px auto;
+}
+
+/* Styling for goal item text */
+.goal-selector .goal-item p {
+    height: 50px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0px;
+    border: 1px solid var(--color-gray-2);
+    border-radius: 20px;
+    color: var(--color-gray-4);
+    position: relative;
+}
+
+/* Styling for goal item span text */
+.goal-selector .goal-item p span {
+    padding: 0;
+    color: var(--color-gray-4);
+}
+
+/* Styling for goal item icon */
+.goal-selector .goal-item .goal-icon .fa-solid {
+    font-size: 35px;
+    position: absolute;
+    left: 35%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for goal item text */
+.goal-selector .goal-item .goal-text {
+    font-size: 15px;
+    letter-spacing: 2px;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Styling for consecutive days text */
+.goal-selector .goal-text .goal-consecutive-days {
+    font-size: 9px;
+    color: var(--color-gray-4);
+    letter-spacing: 1px;
+}
+
+/* Styling for goal indicator circle */
+.goal-selector .goal-item .goal-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--color-gray-2);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 6%;
+}
+
+/* Styling for checked goal indicator */
+.goal-indicator-checked .fa-solid {
+    color: var(--color-white);
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+.goal-indicator-checked {
+    background-color: var(--color-muted-teal);
+    color: white;
+    border: 1px solid var(--color-muted-teal);
+}
+
+/* -- Sleep Time Input Section -- */
+/* Layout for sleep time selector */
+.sleep-time-selector-step {
+    width: 100%;
+    margin: 53px auto;
+    text-align: center;
+}
+
+/* Wrapper for sleep time */
+.sleep-time-wrapper {
+    margin: 40px auto;
+}
+
+/* Styling for sleep time selector display */
+.sleep-time-selector {
+    margin: 0 auto;
+    font-size: 100px;
+    color: var(--color-gray-2);
+    letter-spacing: 6px;
+    font-family: 'Graduate', cursive;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for sleep time */
+.sleep-time-selector .time {
+    margin: 0 auto;
+}
+
+/* Styling for the down and up buttons in sleep time */
+.sleep-time-buttons .fa-angles-down,
+.sleep-time-buttons .fa-angles-up {
+    color: var(--accent-color);
+    font-size: 35px;
+    transition: ease 0.2s;
+}
+
+/* Hover effect for down and up buttons */
+.sleep-time-buttons .fa-angles-down:hover,
+.sleep-time-buttons .fa-angles-up:hover {
+    cursor: pointer;
+    color: var(--accent-color);
+}
+
+/* Styling for reset sleep time button */
+.reset-sleep-time {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Hover effect for reset sleep time button */
+.reset-sleep-time:hover {
+    cursor: pointer;
+}
+
+/* -- Memo Input Section -- */
+/* Styling for memo input section */
+.memo-input-section {
+    width: 100%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Styling for memo textarea */
+.memo-input-section textarea {
+    height: 200px;
+    resize: none;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+/* Wrapper for memo textarea */
+.memo-textarea-wrapper {
+    margin: 60px auto;
+}
+
+/* Styling for memo textarea in wrapper */
+.memo-textarea-wrapper textarea {
+    width: 55%;
+    height: 140px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--color-gray-2);
+    border-radius: 20px;
+    background-color: var(--background-color-textarea);
+    font-size: 15px;
+    resize: none;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+/* Focus effect on memo textarea */
+.memo-textarea-wrapper textarea:focus {
+    border:2px solid var(--color-gray-2);
+    outline:0;
+}
+
+/* Wrapper for memo post button */
+.memo-post-button-wrapper {
+    margin-top: -25px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for memo post button */
+.memo-post-button-wrapper .primary-btn {
+    background-color: var(--color-gray-2);
+    border: 2px solid var(--color-gray-2);
+    opacity: 0.6;
+}
+
+/* Hover effect for memo post button */
+.memo-post-button-wrapper .primary-btn:hover {
+    cursor: default;
+    background-color: var(--color-gray-2);
+    border: 2px solid var(--color-gray-2);
+
+}
+
+/* Styling for selected mood button */
+.mood-is-selected .primary-btn {
+    background-color:  var(--accent-color);
+    border: 2px solid var(--accent-color);
+    opacity: 1;
+}
+
+/* Hover effect for selected mood button */
+.mood-is-selected .primary-btn:hover {
+    background-color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+    opacity: 1;
+    cursor: pointer;
+    transition: ease 0.3s;
+}
+
+/* Styling for mood selector prompt */
+#mood-selection-prompt {
+    color: var(--color-gray-2);
+}
+
+/* Hides the mood selector */
+.mood-selection-prompt {
+    display: none;
+}
+
+
+/* ---------- display_user_goals.php ---------- */
+
+/* Styling for individual goal cards */
+.goal-page .goal-card {
+    margin: 30px auto;
+}
+
+/* Styling for main goal title (h3) */
+.goal-page .goal-card h3 {
+    font-size: 23px !important;
+}
+
+/* Styling for goal card titles (h4) */
+.goal-page .goal-card h4 {
+    font-size: 16px;
+}
+
+/* Styling for the content area within each goal card */
+.goal-page .goal-card-content {
+    width: 200px;
+    margin: 20px 30px;
+    padding: 30px 10px;
+}
+
+/* Styling for goal icon within the goal card */
+.goal-page .goal-card-content .goal-icon {
+    font-size: 60px;
+}
+
+/* Styling for consecutive days counter */
+.goal-page .goal-card-content .consecutive-days-counter {
+    font-size: 16px;
+}
+
+/* Styling for the wrapper around the goals button */
+.goals-button-wrapper {
+    margin: 30px;
+}
+
+/* Styling for the goals button link */
+.goals-button-wrapper a {
+    display: inline-block;
+    height: auto;
+    width: auto;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 20px 45px;
+}
+
+
+/* ---------- set_goals.php ---------- */
+
+/* Main form container for goal setting */
+.goal-setting-form {
+    width: 1000px;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+/* Description text within the goal setting form */
+.goal-setting-form .goal-setting-description {
+    margin: 0;
+    margin-bottom: -20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Container for goal setting items */
+.goal-setting-form .goals-container {
+    width: 70%;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Goal category headings style */
+.goal-setting-form .goals-container div h4 {
+    margin: 0;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 17px;
+    font-size: 20px;
+    background-color: var(--background-color);
+}
+
+/* Individual goal category styling */
+.goals-container .goal-category {
+    margin: 0px auto 50px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    border-left: 3px solid var(--background-color);
+    border-bottom: 3px solid var(--background-color);
+    border-right: 3px solid var(--background-color);
+}
+
+/* Last goal category margin adjustment */
+.goals-container .goal-category:last-child {
+    margin-bottom: 30px;
+}
+
+/* Styling for goal item block */
+.goal-item,
+.goal-item-empty {
+    display: block;
+    text-align: initial;
+    position: relative;
+    margin: 0 auto;
+}
+
+/* Hover effect for goal item labels */
+.goal-item label:hover,
+.goal-item-empty label:hover {
+    cursor: pointer;
+}
+
+/* Goal text input styling */
+.goal-text {
+    width: 170px;
+    height: 50px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 175px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+}
+
+/* Styling for goal items with active status */
+.goals-container .goal-item .goal-text {
+    background-color: var(--color-muted-teal);
+    color: var(--color-white);
+    border: 2px solid rgba(64, 146, 144, 0.1);
+}
+
+/* Styling for empty goal items */
+.goal-item-empty .goal-text {
+    background-color: var(--color-gray-2);
+    color: var(--color-white);
+    border: 2px solid var(--color-gray-2);
+}
+
+/* Checkmark icon styling in goal text box */
+.goal-text .fa-solid {
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+
+/* Circular goal set icon styling */
+.goal-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+
+/* Checkmark icon styling inside goal circle */
+.goal-circle i {
+    font-size: 30px;
+    color: var(--color-muted-teal);
+}
+
+
+/* ---------- insights.php ---------- */
+
+/* -- Navigation Section -- */
+/* Navigation bar for insights page */
+.insight-navigation {
+    width: 15%;
+    margin-left: 35px;
+    display: flex;
+    background-color: var(--color-soft-amber);
+    padding: 8px;
+    border-radius: 40px;
+}
+
+/* Link styling for navigation */
+.insight-navigation div {
+    width: 50%;
+    text-align: center;
+    border-radius: 30px;
+    color: var(--color-white);
+    font-size: 15px;
+}
+
+/* Link styling for navigation */
+.insight-navigation div a {
+    color: var(--color-white);
+    font-size: 15px;
+    text-decoration: none;
+}
+
+/* Hover effect for navigation links */
+.insight-navigation div a:hover {
+    color: var(--accent-color);
+}
+
+/* Active category in navigation */
+.insight-navigation .active-category {
+    background-color: var(--accent-color);
+}
+
+/* Animation for navigation category text */
+.insight-navigation .monthly-category p,
+.insight-navigation .general-category p {
+    margin: 6px auto;
+    transition: 0.3s ease;
+}
+
+/* Wrapper for insights content */
+.insights-wrapper {
+    width: 100%;
+    margin: 15px 0 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+/* -- Insights Left Section -- */
+/* Left section of insights page */
+.insights-left-section {
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Header styling for insights section */
+.insights-wrapper .insights-header {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+/* Text styling for headers */
+.insights-wrapper .insights-header h3 {
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+/* Link styling for headers */
+.mood-associations-header a {
+    font-size: 13px;
+    padding-right: 20px;
+    color: var(--color-golden-tangerine);
+    text-decoration: none;
+}
+
+/* Weekly overview styling in insights */
+.insights-left-section .weekly-overview {
+    text-align: center;
+    border: 3px solid var(--background-color);
+}
+
+/* Progress section styling in insights */
+.insights-left-section .user-progress-section {
+    display: flex;
+    margin: 20px auto;
+    color: var(--color-gray-5);
+}
+
+/* Styling for the daily post status indicator */
+.insights-left-section .user-progress-section .daily-post-status {
+    width: 35px;
+    height: 35px;
+    margin: 30px 0 30px;
+    border: 2px var(--secondary-color) solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Icon styling inside the daily post status indicator */
+.insights-left-section .user-progress-section .daily-post-status i {
+    font-size: 25px;
+}
+
+/* Styling for the progress section in insights */
+.user-progress-section .consecutive-days p {
+    margin: 0 auto;
+}
+
+/* Consecutive days text alignment */
+.user-progress-section .consecutive-days p {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for the last child span inside consecutive days */
+.user-progress-section .consecutive-days p span:last-child {
+    font-size: 14px;
+    margin-top: -7px;
+}
+
+/* Wrapper for moods per month */
+.mood-summary-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--background-color);
+}
+
+/* Summary styling for moods */
+.mood-summary {
+    width: 60%;
+    padding: 10px 0;
+    margin: 10px auto 10px;
+    text-align: center;
+} 
+
+/* Text styling in mood summary */
+.mood-summary p {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+/* Content styling for mood summary */
+.mood-summary-content {
+    font-size: 35px;
+    color: var(--color-gray-4);
+}
+
+/* Wrapper for mood counts */
+.mood-count-wrapper {
+    width: 100%;
+    position: relative;
+    border: 3px solid var(--background-color);
+}
+
+/* Background styling for mood count wrapper */
+.mood-count-wrapper:before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -5;
+}
+
+/* Container for mood statistics */
+.mood-stats-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Wrapper for mood percentages */
+.mood-percentages-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 0 0;
+}
+
+/* Container for individual mood percentages */
+.mood-percentages {
+    width: 100%;
+    display: flex;
+}
+
+/* Bar styling for mood percentages */
+.mood-percentage-bar {
+    margin: 0 2px;
+}
+
+/* Text styling for mood percentage bars */
+.mood-percentage-bar p {
+    margin: 5px;
+}
+
+/* Basic styling for the mood bar graph */
+.mood-bar-graph {
+    height: 30px;
+}
+
+/* Label for mood percentages */
+.mood-percentage-bar .mood-percentage-label {
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-gray-4);
+}
+
+/* Summary container for moods per month */
+.moods-summary {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0 20px;
+    display: flex;
+}
+
+/* Individual mood item in summary */
+.moods-summary .mood-item {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 20px;
+    position: relative;
+}
+
+/* Mood count bubble for each item */
+.moods-summary .mood-item .mood-count {
+    width: 22px;
+    height: 22px;
+    font-size: 13px;
+    position: absolute;
+    top: 5px;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Emoji styling for each mood */
+.moods-summary .mood-item .mood-emoji {
+    padding: 0;
+    font-size: 45px;
+}
+
+
+/* -- Insights Middle Section -- */
+/* Overall layout and styling for the insights middle section */
+.insights-middle-section {
+    width: 29%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Mood chart container styles */
+.mood-chart-container {
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--background-color);
+}
+
+/* Intro text for the mood chart */
+.mood-chart-container .mood-section-intro {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Chart and count wrapper */
+.mood-chart-container .mood-chart {
+    width: 70%;
+    margin: 0 auto;
+}
+.mood-chart-container .mood-chart-count-wrapper {
+    margin: 30px auto;
+}
+
+/* Layout for mood data items */
+.mood-data-list-item {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Paragraph styling within mood data items */
+.mood-data-list-item p {
+    margin: 2px 0;
+}
+
+/* Count styling for moods */
+.mood-data-list-item .mood-count {
+    font-size: 13px;
+    color: var(--color-gray-5);
+}
+
+/* Wrapper for the "no mood records" state */
+.no-mood-records-wrapper {
+    width: 90%;
+    margin: 40px auto;
+    padding: 40px 0;
+    border: 1px dotted var(--color-gray-3);
+    border-radius: 20px;
+    text-align: center;
+}
+
+
+/* Paragraph styling in the no records wrapper */
+.no-mood-records-wrapper p {
+    padding: 30px 30px;
+    color: var(--color-gray-4);
+    font-size: 15px;
+    font-style: italic;
+}
+
+/* -- Insights Right Section -- */ 
+/* Overall layout for the insights right section */
+.insights-right-section {
+    width: 29%;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--background-color);
+}
+
+/* Wrapper for mood association items */
+.mood-association-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 100;
+    position: relative;
+}
+
+/* Navigation for mood association tabs */
+.mood-association-tab-navigation .mood-tabs {
+    width: 95%;
+    margin: 20px auto 0;
+}
+
+/* Tab styles in navigation */
+.mood-association-tab-navigation .mood-tabs [data-tab-target] {
+    margin: 0 5px;
+    padding: 3px 5px;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+/* Tab navigation list styling */
+.mood-association-tab-navigation .mood-tabs ul {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+/* Individual tab list item styling */
+.mood-association-tab-navigation .mood-tabs ul li {
+    width: 65px;
+    background-color: var(--color-soft-amber);
+    color: var(--color-white);
+    transition: 0.3s ease;
+}
+
+/* Tab visibility styles */
+.mood-association-tab-navigation .mood-tabs .tab {
+    opacity: 0.3; /* Reduces visibility of inactive tabs */
+}
+
+/* Hover effect for tabs */
+.mood-association-tab-navigation .mood-tabs .tab:hover {
+    cursor: pointer; /* Changes cursor to pointer for clickable elements */
+    opacity: 1; /* Restores full visibility */
+}
+
+/* Active tab styling */
+.mood-association-tab-navigation .mood-tabs .active {
+    opacity: 1;
+}
+
+/* Tab content styling */
+.mood-association-tab-navigation .mood-tabs .navigation-content p {
+    text-align: center;
+    margin: 5px;
+}
+
+/* Mood association container */
+.mood-association-container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Active tab content */
+.mood-association-container .active[data-tab-content] {
+    display: block; /* Makes the active tab content visible */
+}
+
+/* Default hidden state for tab content */
+.mood-association-container [data-tab-content] {
+    display: none;
+}
+
+/* Mood association list */
+.mood-associated-list {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} 
+
+/* Wrapper for mood content */
+.mood-content-wrapper {
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+/* Intro styling for mood content */
+.mood-content-wrapper .mood-content-intro {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Specific mood background styling */
+.mood-content-wrapper .mood-content-intro .great-mood {
+    background: linear-gradient(transparent 72%, var(--great-mood-color) 87%);
+}
+.mood-content-wrapper .mood-content-intro .good-mood {
+    background: linear-gradient(transparent 72%, var(--good-mood-color) 87%);
+}
+.mood-content-wrapper .mood-content-intro .okay-mood {
+    background: linear-gradient(transparent 72%, var(--okay-mood-color) 87%);
+}
+.mood-content-wrapper .mood-content-intro .bad-mood {
+    background: linear-gradient(transparent 72%, var(--bad-mood-color) 87%);
+}
+.mood-content-wrapper .mood-content-intro .awful-mood {
+    background: linear-gradient(transparent 72%, var(--awful-mood-color) 87%);
+}
+
+/* Mood association item styling */
+.mood-content-wrapper .mood-associated-item {
+    width: 62px;
+    margin: 15px 7px;
+    padding: 10px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    color: var(--color-gray-4);
+    border: 1px solid var(--color-gray-4);
+    background-color: var(--color-white);
+}
+
+/* Mood item icon styling */
+.mood-content-wrapper .mood-associated-item .mood-item-icon { 
+    font-size: 20px;
+}
+
+/* Mood item name styling */
+.mood-content-wrapper .mood-associated-item .mood-item-name {
+    margin: 0 auto;
+    font-size: 10px;
+    padding-bottom: 7px;
+}
+
+/* Mood item count styling */
+.mood-content-wrapper .mood-associated-item .mood-item-count {
+    padding: 0 12px;
+    font-size: 13px;
+    color: var(--color-white);
+    border-radius: 3px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-gray-4);
+}
+
+/* -- Insights Bottom Section -- */
+/* Wrapper for recent posts */
+.recent-posts-wrapper {
+    width: 90%;
+    margin: 20px auto 30px;
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+/* Header section for recent posts, including navigation buttons */
+.recent-posts-header {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: -20px;
+}
+
+/* Title section of the recent posts header */
+.recent-posts-header .header-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Navigation buttons within the recent posts header */
+.recent-posts-header .navigation-buttons {
+    align-self: end;
+    padding: 20px 0;
+}
+
+/* Styling for the previous and next buttons */
+.recent-posts-header .navigation-buttons .previous-btn,
+.recent-posts-header .navigation-buttons .next-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: none;
+    margin: 0 3px;
+    color: var(--color-white);
+    transition: ease 0.2s;
+}
+
+/* Hover effect for previous and next buttons */
+.recent-posts-header .navigation-buttons .previous-btn:hover,
+.recent-posts-header .navigation-buttons .next-btn:hover {
+    background-color: var(--color-golden-tangerine);
+    cursor: pointer;
+}
+
+/* Disabled button state for navigation */
+.recent-posts-header .disabled-btn {
+    background-color: var(--color-soft-amber) !important;
+    cursor: default !important;
+}
+
+/* View all link style within the header */
+.recent-posts-header .view-all-link {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for links within the header */
+.recent-posts-header a {
+    font-size: 13px;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Hover effect for header links */
+.recent-posts-header a:hover {
+    text-decoration: underline;
+}
+
+/* Container for the sliding posts */
+.recent-posts-wrapper .slide-wrapper {
+    height: 230px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Style for the sliding posts element */
+.slide-wrapper .slide-posts {
+    width: 175%;
+    display: flex;
+    position: absolute;
+    transition: ease all 0.4s;
+}
+
+/* Different states of sliding posts */
+.slide-wrapper .slide0 {
+    left: 0%;
+    transition: ease 0.4s;
+}
+.slide-wrapper .slide1 {
+    left: -25%;
+    transition: ease 0.4s;
+}
+.slide-wrapper .slide2 {
+    left: -50%;
+    transition: ease 0.4s;
+}
+.slide-wrapper .slide3 {
+    left: -75%;
+    transition: ease 0.4s;
+}
+
+/* Tracking day container style */
+.recent-posts-wrapper .tracking-day-container {
+    width: 13%;
+    margin: 0 15px;
+    height: 180px;
+}
+
+/* General style for tracking day containers */
+.tracking-day-container {
+    width: 240px;
+    height: 150px;
+    margin: 20px 25px;
+    color: var(--color-gray-5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+/* Hover effect for tracking day containers */
+.tracking-day-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* Styling for tracking day container text */
+.tracking-day-container p {
+    margin: 0 auto;
+}
+
+/* Emoji styling within the tracking day container */
+.tracking-day-container p i {
+    font-size: 63px;
+}
+
+/* Link styling within the tracking day container */
+.tracking-day-container a {
+    width: 100%;
+    color: var(--color-gray-5);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 5px 10px 1px rgb(0 0 0 / 20%);
+    border-radius: 20px;
+}
+
+/* Left indicator styling for tracking day container */
+.tracking-day-left-indicator {
+    width: 30%;
+    height: 150px;
+    background-color: var(--primary-color);
+    border-radius: 20px 0 0 20px;
+}
+
+/* Tracking day container details section */
+.recent-posts-wrapper .tracking-day-container .tracking-day-left-indicator,
+.recent-posts-wrapper .tracking-day-container .tracking-day-details {
+    height: 180px;
+}
+
+/* Styling for the mood status when no mood is set */
+.mood-status-none {
+    background-color: var(--color-white);
+    border: 2px dotted var(--color-gray-2);
+    color: var(--color-gray-3);
+} 
+
+/* Details section for the tracking day container */
+.tracking-day-details {
+    width: 70%;
+    height: 150px;
+    background-color: var(--color-white);
+    border-radius: 0 20px 20px 0;
+    position: relative;
+}
+
+/* Date styling for tracking day container */
+.tracking-day-container .tracking-day-date {
+    position: absolute;
+    padding: 10px;
+    top: 3%;
+    right: 10%;
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+/* Emoji styling within tracking day container */
+.tracking-day-container .tracking-day-emoji {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Styling for the background circle behind the emoji */
+.tracking-day-container .tracking-day-emoji::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    z-index: -5;
+}
+
+/* Larger circle behind the emoji for recent posts section */
+.recent-posts-wrapper .tracking-day-container .tracking-day-emoji::before {
+    content: "";
+    width: 72px;
+    height: 72px;
+    top: -6px;
+    left: -4px;
+}
+
+/* Mood name styling within tracking day container */
+.recent-posts-wrapper .tracking-day-container .tracking-day-mood-name {
+    font-size: 25px;
+    text-align: center;
+}
+
+/* Mood name positioning within the tracking day container */
+.tracking-day-container .tracking-day-mood-name {
+    font-size: 20px;
+    letter-spacing: 1px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Spacing for mood name sub-elements */
+.tracking-day-container .tracking-day-mood-name span {
+    margin-top: -10px;
+}
+
+/* Japanese mood name styling */
+.recent-posts-wrapper .tracking-day-container .mood-name-japanese {
+    font-size: 17px;
+}
+
+/* Feeling wrapper styling within tracking day container */
+.tracking-day-container .feeling-wrapper {
+    position: absolute;
+    padding: 10px;
+    font-size: 10px;
+    top: 64%;
+    right: 10%;
+}
+
+/* Styling for feeling wrapper text */
+.tracking-day-container .feeling-wrapper p {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for individual feeling wrapper text */
+.tracking-day-container .feeling-wrapper p span {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+/* No records message style when there are no posts */
+.no-records-message {
+    width: 100%;
+    margin: 40px auto;
+    padding: 60px 0;
+    text-align: center;
+    color: var(--color-gray-4);
+    font-size: 15px;
+    font-style: italic;
+    border: 1px dotted var(--color-gray-3);
+    border-radius: 20px;
+}
+
+
+/* ---------- user_tracking_records.php ---------- */
+
+/* Wrapper for tracking records */
+.tracking-records-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+
+/* Styling for the header of tracking records */
+.tracking-records-wrapper h3 {
+    margin: 0 auto 20px;
+}
+
+/* Adds spacing below alert elements within the tracking records wrapper */
+.tracking-records-wrapper .alert {
+    margin-bottom: 35px;
+}
+
+/* Container for the list of tracking records */
+.tracking-records-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Emoji styling within each tracking day container */
+.tracking-records-list .tracking-day-container .tracking-day-emoji::before {
+    content: "";
+    width: 72px;
+    height: 72px;
+    top: -5px;
+    left: -5px;
+}
+
+/* Pagination wrapper for pagination controls */
+.pagination-wrapper {
+    margin: 30px auto 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Link styling for pagination items */
+.pagination-wrapper a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+/* Active page styling in the pagination */
+.pagination-wrapper a.pagination-active-page {
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    border-radius: 50%;
+}
+
+/* Hover effect for pagination links except the active page */
+.pagination-wrapper a:hover:not(.pagination-active-page) {
+    background-color: var(--color-gray-1);
+    border-radius: 50%;
+}
+
+/* Styling for pagination icons (previous, next, etc.) */
+.pagination-wrapper .pagination-icon {
+    height: 40px;
+    padding: 0 16px;
+}
+
+/* Styling for pagination double arrows */
+.pagination-wrapper .pagination-double-arrows {
+    padding: 0 13px;
+}
+
+/* Flexbox styling for FontAwesome icons */
+.pagination-wrapper .fa-solid {
+    display: flex;
+    align-self: center;
+}
+
+/* Container for pagination page numbers */
+.pagination-pages {
+    display: flex;
+}
+
+/* Styling for each pagination page number link */
+.pagination-pages a {
+    padding: 8px 16px;
+    transition:background-color .3s;
+    border-radius: 50%;
+}
+
+/* Active page styling in the pagination list */
+.pagination-active-page {
+    display: flex;
+    align-self: center;  
+}
+
+/* Disabled pagination link styling (hidden) */
+.pagination-disabled {
+    display: none;
+    color: var(--color-gray-2);
+    pointer-events: none;
+    display: none;
+    padding: 8px 16px;
+}
+
+/* Spacing between individual pagination page numbers */
+.pagination-page {
+    margin: auto 3px;
+}
+
+
+/* ---------- daily_tracking_overview.php ---------- */
+
+/* Wrapper for tracking records */
+.tracking-records-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+}
+
+/* Modal styles in tracking records */
+.tracking-records-wrapper .modal-main {
+    justify-content: center !important;
+    margin-top: 0 !important;
+    padding: 15px !important;
+}
+
+/* Delete post button styles */
+#delete-post-button {
+    margin-right: 25px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    font-size: 18px;
+    background: none;
+    border: none;
+}
+
+/* Mood registration form styles */
+.mood-registration-form {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.mood-registration-form input {
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    padding: 25px 70px;
+    border-radius: 25px;
+    border: none;
+    font-size: 20px;
+    transition: ease 0.2s;
+}
+.mood-registration-form input:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Wrapper for day-specific details */
+.day-wrapper {
+    margin: 0 auto 30px;
+    display: block;
+    align-items: center;
+    text-align: center;
+}
+
+/* Date information styles */
+.date-info {
+    margin-top: -20px;
+    display: block;
+    justify-content: center;
+}
+
+/* Weekday name styles */
+.weekday-name {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-bottom: -15px;
+}
+
+/* Navigation for date selection */
+.date-navigation {
+    width: 280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--primary-color);
+    position: relative;
+}
+
+/* Navigation buttons for next/previous days */
+.date-navigation button {
+    background-color: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 20px;
+}
+.date-navigation .next-day-btn,
+.date-navigation .previous-day-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: none;
+    margin: 0 3px;
+    color: var(--color-white);
+    transition: ease 0.2s;
+}
+.date-navigation .next-day-btn:hover,
+.date-navigation .previous-day-btn:hover {
+    cursor: pointer;
+    background-color: var(--color-golden-tangerine);
+}
+
+/* Positioning for previous button */
+.date-navigation .previous-day-btn {
+    position: absolute;
+    top: 50%;
+    left: -6.5%;
+    transform: translate(-50%, -50%);
+}
+
+/* Positioning for next button */
+.date-navigation .next-day-btn {
+    position: absolute;
+    top: 50%;
+    right: -18%;
+    transform: translate(-50%, -50%);
+}
+
+/* Icon positioning for navigation buttons */
+.date-navigation .previous-day-btn i,
+.date-navigation .next-day-btn i  {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+}
+
+/* Container for mood details */
+.day-details-container {
+    width: 95%;
+    min-height: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+
+/* Mood details container */
+.day-details-container .mood-details-container {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Specific mood styling (great, good, okay, bad, awful) */
+.Great-mood {
+    background-color: var(--great-mood-color) !important;
+    border: 2px var(--great-mood-color) solid !important;
+}
+.Good-mood {
+    background-color: var(--good-mood-color) !important;
+    border: 2px var(--good-mood-color) solid !important;
+}
+.Okay-mood {
+    background-color: var(--okay-mood-color) !important;
+    border: 2px var(--okay-mood-color) solid !important;
+}
+.Bad-mood {
+    background-color: var(--bad-mood-color) !important;
+    border: 2px var(--bad-mood-color) solid !important;
+}
+.Awful-mood {
+    background-color: var(--awful-mood-color) !important;
+    border: 2px var(--awful-mood-color) solid !important;
+}
+
+/* Container for displaying large mood emoji */
+.mood-emoji-container {
+    font-size: 120px;
+    color: var(--color-white);
+}
+
+/* Paragraph styling within mood emoji container */
+.mood-emoji-container p {
+    margin: 0;
+}
+
+/* Sets the color of solid icons within the mood emoji container to the white color variable */
+.mood-emoji-container .fa-solid {
+    color: var(--color-white) !important;
+}
+
+/* Container for displaying text associated with the mood */
+.mood-text-container {
+    font-size: 35px;
+    color: var(--color-white);
+}
+
+/* Paragraph styling within mood text container */
+.mood-text-container p {
+    margin: 0;
+    margin-top: -30px;
+}
+
+/* Main container for additional details displayed beside the mood */
+.additional-details-container {
+    width: 80%;
+    display: flex;
+}
+
+/* Border styling for moods */
+/* Great mood border */
+.Great-mood-border {
+    border: 3px solid var(--great-mood-color);
+}
+/* Good mood border */
+.Good-mood-border {
+    border: 3px solid var(--good-mood-color);
+}
+/* Okay mood border */
+.Okay-mood-border {
+    border: 3px solid var(--okay-mood-color);
+}
+/* Bad mood border */
+.Bad-mood-border {
+    border: 3px solid var(--bad-mood-color);
+}
+/* Awful mood border */
+.Awful-mood-border {
+    border: 3px solid var(--awful-mood-color);
+}
+
+/* Left section of additional details container */
+.additional-details-container .left-section {
+    width: 40%;
+    padding: 10px 40px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Header styling within additional details */
+.additional-details-container h4 {
+    color: var(--color-gray-5);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+/* Feeling container for listing feelings */
+.feeling-container .feeling-item {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 8px;
+    font-size: 18px;
+}
+
+/* Individual feeling item span styling */
+.feeling-container.feeling-item span {
+    position: relative;
+}
+
+/* Styling for sleep duration display within the sleep container */
+.sleep-container .sleep-duration-display p {
+    margin: 0;
+    font-size: 25px;
+}
+
+/* Styling for the memo text area input */
+.memo-textarea {
+    padding: 20px;
+    border-radius: 20px;
+    margin: 10px 0;
+}
+
+/* Background colors for memo containers based on mood */
+.memo-container .Great {
+    background-color: rgb(129, 32, 97, 0.3); 
+}
+.memo-container .Good {
+    background-color: rgb(235, 102, 148, 0.3);
+}
+.memo-container .Okay {
+    background-color: rgb(139, 204, 202, 0.3);
+}
+.memo-container .Bad {
+    background-color: rgb(157, 195, 230, 0.3);
+}
+.memo-container .Awful {
+    background-color: rgb(39, 98, 126, 0.3);
+}
+
+/* Right section of additional details container */
+.additional-details-container .right-section {
+    width: 60%;
+    padding: 10px 40px;
+    text-align: left;
+}
+
+/* Activity container styles */
+.activities-container .activity-detail-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Wrapper for individual activity items */
+.activities-container .item-wrapper {
+    width: 80px;
+    margin: 8px 0;
+    font-size: 10px;
+    border: none;
+    padding: 0;
+    color: var(--color-gray-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Icon container for activity items */
+.activities-container .item-wrapper .item-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-white);
+    margin-bottom: 8px;
+    font-size: 27px;
+}
+
+/* Paragraph styling within activity items */
+.activities-container .item-wrapper p {
+    margin: 0 auto;
+    font-size: 10px;
+    padding-bottom: 7px;
+}
+
+/* Styling for the count display within activity items */
+.activities-container .item-wrapper .count {
+    padding: 0 12px;
+    font-size: 13px;
+    color: var(--color-white);
+    border-radius: 3px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-gray-4);
+}
+
+/* Wrapper for the entire goals container */
+.goals-container {
+    margin: 20px auto;
+}
+
+/* Wrapper for completed goals list */
+.completed-goals-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px auto;
+}
+
+/* Individual goal item styling */
+.completed-goals-wrapper .goal-item {
+    width: 320px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid var(--color-gray-4);
+    border-radius: 25px;
+}
+
+/* Paragraph text styling within goal items */
+.completed-goals-wrapper .goal-item p {
+    margin: 10px ;
+}
+
+/* Styling for icons within goal items */
+.completed-goals-wrapper .goal-item .goal-icon {
+    font-size: 30px;
+    margin: 0 15px 0 25px;
+}
+
+/* Styling for container when no tracking data is available */
+.no-tracking-data {
+    width: 100%;
+    border: 2px dotted var(--color-gray-4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Paragraph text styling for no tracking data message */
+.no-tracking-data p {
+    color: var(--color-gray-5);
+    font-size: 25px;
+    padding-bottom: 165px;
+}
+
+
+/* ---------- mood_associations.php ---------- */
+
+/* Wrapper for the mood associations page */
+.mood-association-wrapper .mood-associations-page {
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    width: 60%;
+}
+
+/* Styling for mood association tabs */
+.mood-associations-page-tabs [data-tab-target] {
+    padding: 10px 15px !important;
+}
+
+/* Styling for tab content (hidden by default) */
+.mood-associations-page [data-tab-content] {
+    display: none;
+}
+
+/* Display tab content when active */
+.mood-associations-page .active[data-tab-content] {
+    display: block;
+}
+
+/* Title section styling for mood associations page */
+.mood-associations-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* ---------- monthly_insights.php ---------- */
+
+
+/* Container for the top section of monthly insights */
+.monthly-insights-top {
+    display: flex;
+    width: 100%;
+    gap: 10%;
+    position: relative;
+}
+
+/* Title section of monthly insights */
+.monthly-insights-top .monthly-insights-title {
+    margin: 0 auto;
+    margin-top: -60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Japanese month name styling */
+.monthly-insights-top .monthly-insights-title .month-name-japanese {
+    font-size: 25px;
+    text-align: center;
+}
+
+/* English month name styling */
+.monthly-insights-top .monthly-insights-title .month-name-english {
+    font-size: 50px;
+    margin-top: -10px;
+    font-weight: 800;
+}
+
+/* -- Navigation Section -- */
+/* Navigation buttons for month selection */
+.monthly-insights-top .month-navigation-buttons {
+    align-self: center;
+    padding: 20px 0;
+    display: flex;
+    position: absolute;
+}
+
+/* Styling for individual month navigation buttons */
+.month-navigation-buttons a .month-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: none;
+    color: var(--color-white);
+    cursor: pointer;
+    position: relative;
+    top: 15px;
+    transition: ease 0.2s;
+}
+
+/* Positioning for previous month button */
+.month-navigation-buttons a .previous-month {
+    left: -150px;
+}
+
+/* Positioning for next month button */
+.month-navigation-buttons a .next-month {
+    right: -150px;
+}
+
+/* Hover effect for the month navigation buttons */
+.month-navigation-buttons a .month-button:hover {
+    background-color: var(--color-golden-tangerine);
+}
+
+/* Icon styling inside the month navigation buttons */
+.month-navigation-buttons .month-button i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+}
+
+/* Styling for disabled month navigation buttons */
+.month-navigation-buttons  .disabled-btn {
+    background-color: var(--color-soft-amber) !important;
+    cursor: default !important;
+}
+
+/* Header section inside insights wrapper */
+.insights-wrapper .insights-header {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Heading styling inside insights header */
+.insights-wrapper .insights-header h3 {
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+/* -- Monthly Insights Left Section -- */
+/* Wrapper for the posted days section */
+.montly-posted-days-wrapper {
+    border: 3px solid var(--background-color);
+}
+
+/* Content styling for the posted days section */
+.montly-posted-days-content {
+    width: 60%;
+    padding: 10px 0;
+    margin: 10px auto 10px;
+    text-align: center;
+} 
+
+/* Paragraph styling inside the posted days content */
+.montly-posted-days-content p {
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 5px;
+}
+
+/* Statistics styling inside the posted days content */
+.montly-posted-days-content .posted-days-stats {
+    font-size: 35px;
+    color: var(--color-gray-4);
+}
+
+/* Calendar Wrapper: Defines the overall calendar container's size and border styling */
+.calendar-wrapper {
+    width: 100%;
+    border: 3px solid var(--background-color);
+    box-sizing: border-box;
+}
+
+/* Calendar Container: Centers the calendar table inside the wrapper */
+.calendar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Calendar Table: Adds padding and background to the calendar table */
+.calendar-container table {
+    padding: 20px 20px 25px 20px;
+    background-color: var(--color-white);
+}
+
+/* Table Header: Styles the day labels (e.g., Mon, Tue, Wed) with smaller text size */
+.calendar-container tbody tr th {
+    font-size: 10px;
+    font-weight: lighter;
+    width: calc(450px / 7);
+    color: var(--primary-color);
+}
+
+/* Table Cells: Defines the width and alignment for each date cell */
+.calendar-container tbody tr td {
+    width: calc(450px / 7);
+    text-align: center;
+    height: 60px;
+    position: relative;
+}
+
+/* Styling for the date number inside the cell */
+.calendar-container tbody tr td p {
+    padding: 0;
+    margin: 0;
+    font-size: 11px;
+}
+
+/* Day Number Positioning: Ensures the day number appears at the bottom-center of each cell */
+.calendar-container tbody tr td .day-number {
+    font-size: 10px;
+    position: absolute;
+    bottom: -23%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Empty Cells: Adds a visual background for empty cells in the calendar */
+.calendar-container  .empty-cell {
+    position: relative;
+}
+
+/* Styling for the empty cell background circle */
+.calendar-container .empty-cell::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-gray-1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+/* Icon Styling: Positions the icons inside the cells */
+.calendar-container tbody tr td .fa-regular {
+    font-size: 40px;
+    padding: 0;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    background-color: var(--color-white);
+}
+
+/* Secondary Text: Reduces the opacity of secondary text */
+.calendar-container .text-secondary {
+    opacity: 0.3;
+}
+
+/* Hidden Secondary Icons: Makes secondary icons fully transparent */
+.calendar-container .text-secondary i {
+    opacity: 0;
+}
+
+/* -- Monthly Insights Middle Section -- */
+/* Sleep Chart Section: Defines the overall layout and border for the sleep chart */
+.sleep-chart-section {
+    width: 100%;
+    display: block;
+    position: relative;
+    border: 3px solid var(--background-color);
+} 
+
+/* Before Pseudo Element: Adds a decorative shape before the sleep chart */
+.sleep-chart-section:before{
+    content: "";
+    height: 100%;
+    width: 90%;
+    position: absolute;
+    border-radius: 0 50px 50px 0;
+    left: 0;
+    top: 0;
+    z-index: -5;
+}
+
+/* Sleep Chart Container: Centers the chart and controls its positioning */
+.sleep-chart-container {
+    width: 80%;
+    margin: 15px auto 0;
+    position: relative;
+    text-align: center;
+}
+
+/* Time Label: Styles the time labels on the chart */
+.sleep-chart-container .sleep-chart-time-label {
+    position:absolute;
+    left: -10%;
+    top: 44%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: var(--color-gray-4);
+}
+
+/* Day Label: Styles the labels for days of the week on the chart */
+.sleep-chart-container .sleep-chart-day-label {
+    margin-top: 0;
+    font-size: 12px;
+    color: var(--color-gray-4);
+}
+
+/* Sleep Chart Legend: Defines layout and appearance for the chart's legend */
+.sleep-chart-legend {
+    margin: 0 auto;
+    display: flex;
+    text-align: center;
+    width: 60%;
+}
+
+/* Legend Item Styling: Sets margin and font size for each legend item */
+.sleep-chart-legend p {
+    width: 100px;
+    font-size: 13px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+/* Custom Legend Markers: Adds unique styling to legend items */
+.sleep-chart-legend .sleep-chart-more-than:before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    background-color: rgb(129, 32, 97, 0.5);
+    border: 1px solid var(--great-mood-color);
+    position: absolute;
+    left: 50%;
+    top: -55%;
+    transform: translate(-50%, -50%);
+}
+
+/* Another Custom Legend Marker: Adds a different color for the "less than" legend item */
+.sleep-chart-legend .sleep-chart-less-than:before {
+    content: "";
+    width: 11px;
+    height: 11px;
+    background-color: rgb(39, 98, 126, 0.5);
+    border: 1px solid var(--primary-color);
+    position: absolute;
+    left: 50%;
+    top: -55%;
+    transform: translate(-50%, -50%);
+}
+
+.sleep-chart-more-than, 
+.sleep-chart-less-than  {
+    position: relative;
+}
+
+/* -- Monthly Insights Right Section -- */
+/* Ranking Navigation: Centers and organizes the ranking navigation items */
+.ranking-navigation-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* Instructions Layout: Organizes the instructions section */
+.navigation-instructions {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Styling for individual instruction paragraphs */
+.navigation-instructions p {
+    margin: 10px auto 10px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--color-gray-4);
+}
+
+/* Category Tabs: Styles the container and list for navigation tabs */
+.ranking-navigation-container .category-tabs {
+    margin: 10px auto;
+    padding: 0 10px;
+}
+
+/* Navigation List: Organizes the navigation items in a horizontal list */
+.ranking-navigation-container ul {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+/* Individual Tab Styling: Defines appearance and transitions for each tab */
+.ranking-navigation-container ul li {
+    background-color: var(--color-soft-amber);
+    color: var(--color-white);
+    transition: 0.3s ease;
+}
+
+/* General styling for paragraph elements in the ranking navigation */
+.ranking-navigation-container p {
+    margin: 5px 0;
+}
+
+/* Styling for each category tab button */
+.ranking-navigation-wrapper .category-tabs [data-tab-target]{
+    width: 10%;
+    margin: 0 5px;
+    padding: 3px 5px;
+    font-size: 12px;
+    border-radius: 20px;
+}
+
+/* Active state styling for category tab button */
+.ranking-navigation-wrapper .category-tabs .active[data-tab-target]{
+    width: 30%;
+    color: var(--color-white);
+    background-color: var(--accent-color);
+}
+
+/* Styling for hovering tab buttons when a tab is active */
+.ranking-navigation-wrapper .category-tabs .tab-hover .active[data-tab-target]{
+    width: 10%;
+}
+
+/* Adjusting the active tab button size on hover */
+.ranking-navigation-wrapper .category-tabs .navigation-tab:hover ~ .active[data-tab-target] {
+    width: 10%;
+}
+
+/* Hover Effects for Tabs: Adjusts width and background when hovered */
+.ranking-navigation-wrapper .category-tabs .navigation-tab:hover:not(.active[data-tab-target]){
+    width: 30%;
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Tab Content: Hides inactive tab content */
+.ranking-contents-wrapper [data-tab-content] {
+    display: none;
+}
+
+/* Active Content: Displays content for active tab */
+.ranking-contents-wrapper .active[data-tab-content] {
+    display: block;
+}
+
+/* Header Styling for Rankings */
+.ranking-contents-wrapper h3 {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 500;
+    color: var(--color-gray-4);
+}
+
+/* Ranking Header Span Styling */
+.ranking-contents-wrapper h3 span {
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+/* Ranking Container: Organizes ranking items in a vertical layout */
+.ranking-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Individual Ranking Item: Styles each ranking entry */
+.ranking-content {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-gray-2);
+    position: relative;
+}
+
+/* First Ranking Item: Adds additional margin and top border */
+.ranking-content:first-child {
+    margin-top: 20px;
+    border-top: 1px solid var(--color-gray-2);
+}
+
+/* Styling for ranking number inside the content */
+.ranking-content .ranking {
+    width: 35px;
+    height: 35px;
+    margin: 2px 0;
+    font-size: 15px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--accent-color);
+}
+
+/* Styling for the ranking icon inside each ranking content */
+.ranking-content .rank-icon {
+    margin: 0;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+}
+
+/* Styling for the ranking name inside each content item */
+.ranking-content .rank-name {
+    margin: 0;
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 32%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+}
+
+/* Styling for the rank count inside each ranking item */
+.ranking-content .rank-count {
+    margin: 0;
+    font-size: 16px;
+    color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for wrapper when no ranking records are available */
+.no-records-wrapper {
+    width: 90%;
+}
+
+
+/* ---------- edit-post.php ---------- */
+
+/* Wrapper for the entire edit post section */
+.edit-post-wrapper {
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Centers the main content of the post item */
+.edit-post-wrapper .posts-feed .post-item .post-main-content {
+    justify-content: center;
+}
+
+/* Adds padding to the bottom of each post item */
+.edit-post-wrapper .posts-feed .post-item {
+    padding-bottom: 30px;
+}
+
+/* Styling for the textarea in the post item */
+.edit-post-wrapper .posts-feed .post-item textarea {
+    width: 550px;
+    height: 140px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--color-gray-2);
+    border-radius: 20px;
+    background-color: var(--background-color-textarea);
+    font-size: 15px;
+    resize: none;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+/* Removes the outline and keeps the border style when the textarea is focused */
+.edit-post-wrapper .posts-feed .post-item textarea:focus {
+    border:2px solid var(--color-gray-2);
+    outline:0;
+}
+
+/* Styling for the buttons section below the post */
+.edit-post-buttons {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+/* ---------- Mood-Based Styles for Mood Elements and Goal Icons ---------- */
+
+/* Styles for "Great" mood elements */
+#mood-text1,
+.GreatDayEmoji,
+.emoji-status-great,
+.fa-face-laugh-beam,
+.Great-mood-border .goal-icon {
+    color: var(--great-mood-color) !important; /* Sets the color for elements associated with the "Great" mood */
+}
+.mood-great,
+.mood-tabs .mood-great,
+.great-percentage .mood-bar-graph,
+.mood-association-tab-navigation .mood-tabs .mood-great {
+    background-color: var(--great-mood-color) !important; /* Sets the background color for "Great" mood elements */
+}
+
+/* Styles for "Good" mood elements */
+#mood-text2,
+.GoodDayEmoji,
+.emoji-status-good,
+.fa-face-smile-beam,
+.Good-mood-border .goal-icon {
+    color: var(--good-mood-color) !important;  /* Sets the color for elements associated with the "Good" mood */
+}
+.mood-good,
+.mood-tabs .mood-good,
+.good-percentage .mood-bar-graph,
+.mood-association-tab-navigation .mood-tabs .mood-good {
+    background-color: var(--good-mood-color) !important; /* Sets the background color for "Good" mood elements */
+}
+
+/* Styles for "Okay" mood elements */
+#mood-text3,
+.OkayDayEmoji,
+.emoji-status-okay,
+.fa-face-meh,
+.Okay-mood-border .goal-icon {
+    color: var(--okay-mood-color) !important; /* Sets the color for elements associated with the "Okay" mood */
+}
+.mood-okay,
+.mood-tabs .mood-okay,
+.okay-percentage .mood-bar-graph,
+.mood-association-tab-navigation .mood-tabs .mood-okay {
+    background-color: var(--okay-mood-color) !important; /* Sets the background color for "Okay" mood elements */
+}
+
+/* Styles for "Bad" mood elements */
+#mood-text4,
+.BadDayEmoji,
+.emoji-status-bad,
+.fa-face-frown,
+.Bad-mood-border .goal-icon {
+    color: var(--bad-mood-color) !important; /* Sets the color for elements associated with the "Bad" mood */
+}
+.mood-bad,
+.mood-tabs .mood-bad,
+.bad-percentage .mood-bar-graph,
+.mood-association-tab-navigation .mood-tabs .mood-bad {
+    background-color: var(--bad-mood-color) !important; /* Sets the background color for "Bad" mood elements */
+}
+
+/* Styles for "Awful" mood elements */
+#mood-text5,
+.AwfulDayEmoji,
+.emoji-status-awful,
+.fa-face-tired,
+.Awful-mood-border .goal-icon { 
+    color: var(--awful-mood-color) !important; /* Sets the color for elements associated with the "Awful" mood */
+}
+.mood-awful, .AwfulDay,
+.mood-tabs .mood-awful,
+.awful-percentage .mood-bar-graph,
+.mood-association-tab-navigation .mood-tabs .mood-awful {
+    background-color: var(--awful-mood-color) !important; /* Sets the background color for "Awful" mood elements */
+} 
+

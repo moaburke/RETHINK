@@ -1,0 +1,2561 @@
+/**
+ * File Name: admin.css
+ * Author: Moa Burke
+ * Date: 2024-12-17
+ * Description: Styles for the admin pages of the RETHINK project, 
+ * including the dashboard, user management, and content moderation features.
+ *
+ * Features:
+ * - Layout and design for admin panels, tables, and modals.
+ * - Highlights administrative tools and controls.
+ * - Implements a clean, professional aesthetic for admins.
+ *
+ * Notes:
+ * - Shared styles are located in shared.css.
+ */
+
+/* Define colors for the website */
+:root {
+    --primary-color: #27627E;
+    --secondary-color: #409290;
+    --accent-color: #f1b24a;
+    --background-color: #eef5f5;
+
+    --admin-color-deep-teal: #27627E;
+    --admin-color-sky-blue: #9DC3E6;
+    --admin-color-aqua-green: #8BCCCA;
+    --admin-golden-tangerine: #f7a420;
+    --admin-color-golden-honey: #f1b14acc;
+
+    --color-white: #fff;
+    --color-off-white: #fefefe;
+    --color-gray-1: #ddd;
+    --color-gray-2: #cdcdcd;
+    --color-gray-3: #A6A6A6;
+    --color-gray-4: #989898;
+    --color-gray-5: #6d6d6d;
+    --color-gray-6: #4d4d4d;
+    --color-gray-7: #26282ac6;
+    --color-red: #cb3d3d;
+    --color-brick-red: #924040;
+    --color-soft-amber: #f1b14a6d;
+    --color-golden-orange: #e48e00;
+
+    --great-mood-color: #812061; /* Color for Great mood */
+    --good-mood-color: #EB6694; /* Color for Good mood */
+    --okay-mood-color: #8BCCCA; /* Color for Okay mood */
+    --bad-mood-color: #9DC3E6; /* Color for Bad mood */
+    --awful-mood-color: #27627E; /* Color for Awful mood */
+}
+
+
+/* ---------- Main Wrapper for Admin Page ---------- */
+
+/* Styles for the main wrapper of the admin page */
+.admin-main-wrapper {
+    padding-left: 200px;
+    padding-top: 100px;
+    height: 100%;  
+}
+
+
+/* ---------- Admin Page Header ---------- */
+
+/* Header styles for the admin page */
+.admin-main-wrapper h2  {
+    position: fixed;
+    font-size: 30px;
+    top: 2px;
+    left: 250px;
+    text-transform: uppercase;  
+    z-index: 25;
+}
+
+
+/* -------- Error Message Styling -------- */
+.error {
+    position: absolute;
+    right: 0;
+}
+.error p, .error-icon p {
+    margin: 0;
+    padding: 3px !important;
+    font-size: 12px !important;
+    color: red !important;
+}
+
+
+/* ---------- admin_dashboard.php ---------- */
+
+/* Styles for the welcome section in the dashboard */
+.admin-welcome-section {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Styles for the heading inside the welcome section */
+.admin-welcome-section h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+/* -- User Statistic Overview Section -- */
+/* Wrapper for user statistics section */
+.user-statistics-wrapper {
+    width: 90%;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Styles for individual user statistics box */
+.user-statistics-wrapper .user-statistic {
+    width: 25%;
+    margin: 0 auto;
+    padding: 20px 35px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+/* Background color for the total users statistic box */
+.user-statistics-wrapper .total-users-statistic {
+    background-color: var(--admin-color-deep-teal);
+}
+
+/* Background color for the active users statistic box */
+.user-statistics-wrapper .active-users-statistic {
+    background-color: var(--admin-color-golden-honey);
+}
+
+/* Background color for the new registrations statistic box */
+.user-statistics-wrapper .new-registrations-statistic {
+    background-color: var(--admin-color-aqua-green);
+}
+
+/* Background color for the registrations last month statistic box */
+.user-statistics-wrapper .registrations-last-month-statistic {
+    background-color: var(--admin-golden-tangerine);
+}
+
+/* Styles for the title text inside each statistic box */
+.user-statistics-wrapper .user-statistic h4 {
+    margin: 0px;
+    font-size: 15px;
+    color: var(--color-white);
+    opacity: 0.8;
+}
+
+/* Styles for the statistic count (big number) */
+.user-statistics-wrapper .user-statistic .statistic-count {
+    font-size: 35px;
+    margin: 0;
+    color: var(--color-white);
+}
+
+/* Styles for percentage change text, increase, and decrease */
+.user-statistics-wrapper .user-statistic .percentage-change, 
+.user-statistics-wrapper .user-statistic .percentage-increase, 
+.user-statistics-wrapper .user-statistic .percentage-decrease {
+    color: var(--color-white);
+    opacity: 0.8;
+}
+
+/* Styles for paragraph text inside statistic boxes */
+.user-statistics-wrapper .user-statistic p {
+    margin: 0;
+}
+
+/* -- Mood Statistics Section -- */
+/* General wrapper for mood-related data */
+.mood-statistic-wrapper {
+    display: flex;
+    width: 90%;
+    margin: 0 auto 50px;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/* Container for update records (top-left of mood statistics) */
+.mood-statistic-wrapper .update-records {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Styles for record headings */
+.mood-statistic-wrapper .update-records div {
+    height: 50%;
+    flex-direction: column;
+}
+
+/* Record heading background and border */
+.mood-statistic-wrapper .update-records .record-heading {
+    background-color: var(--background-color);
+    border: 2px solid var(--background-color);
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Text styling for record headings */
+.mood-statistic-wrapper .update-records .record-heading p {
+    margin: 0;
+    margin-left: 20px;
+    font-size: 17px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Content styling inside records */
+.mood-statistic-wrapper .update-records .record-content {
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid var(--background-color);
+}
+
+/* Text styling for main record content */
+.mood-statistic-wrapper .update-records .record-content p {
+    font-size: 35px;
+    margin: 0;
+    margin-left: 35px;
+    color: var(--secondary-color);
+}
+
+/* Styling for the record labels */
+.mood-statistic-wrapper .update-records div .record-content .record-label {
+    margin: 0;
+    margin-left: 35px;
+    font-size: 18px;
+    color: var(--color-gray-4);
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+/** Styles for Monthly and Weekly Mood Data **/
+/* Wrapper for monthly and weekly mood data boxes */
+.mood-statistic-wrapper .monthly-mood-data, 
+.mood-statistic-wrapper .weekly-mood-data {
+    width: 33%;
+    padding: 0 0 20px;
+    margin: 0;
+    background-color: var(--color-white);
+    border: 2px solid var(--background-color);
+}
+
+/* Introductory text inside mood data boxes */
+.mood-statistic-wrapper .monthly-mood-data .mood-intro-text, 
+.mood-statistic-wrapper .weekly-mood-data .mood-intro-text {
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-gray-4);
+}
+
+/* Header styling for mood data boxes */
+.mood-statistic-wrapper .monthly-mood-data h3, 
+.mood-statistic-wrapper .weekly-mood-data h3 {
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 1px 20px;
+    font-size: 17px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+}
+
+/* Chart section inside mood data boxes */
+.mood-statistic-wrapper .monthly-mood-data .mood-chart, 
+.mood-statistic-wrapper .weekly-mood-data .mood-chart {
+    padding: 10px 30px 20px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* Mood count text displayed below the chart */
+.mood-statistic-wrapper .monthly-mood-data .mood-count, 
+.mood-statistic-wrapper .weekly-mood-data .mood-count {
+    margin: 0 0 10px;
+}
+
+/** Styles for Individual Mood Records **/
+/* Wrapper for mood record elements */
+.mood-data-wrapper .mood-record {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Paragraph styling inside mood records */
+.mood-data-wrapper .mood-record p {
+    margin: 2px 0;
+}
+
+/* Styling for mood bars within records */
+.mood-data-wrapper .mood-bar {
+    width: 40px;
+    height: 8px;
+}
+
+/* Styling for mood names within records */
+.mood-data-wrapper .mood-name {
+    color: var(--primary-color);
+}
+
+/* Total count styling for moods */
+.mood-data-wrapper .mood-total-count {
+    margin-left: 30px;
+    font-size: 13px;
+    color: var(--color-gray-5);
+}
+
+
+/* ---------- manage_users.php ---------- */
+
+/* Main wrapper for the user management table */
+.user-management-table  {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Styling for the user management navigation container */
+.user-management-navigation {
+    width: 25%;
+    margin: 0 80px;
+}
+
+/* Styling for each list item within the navigation */
+.user-management-navigation li {
+    width: 50%;
+    background-color: var(--color-soft-amber);
+    transition: ease all 0.2s;
+}
+
+/* Active tab styling with different background and text color */
+.user-management-navigation .active[data-tab-target] {
+    background-color: var(--accent-color);
+    color: var(--color-white);
+}
+
+/* Styling for English labels inside the navigation */
+.user-management-navigation .english-label {
+    font-size: 14px;
+}
+
+/* Styling for tabs when hovered, except for active tabs */
+.user-management-navigation .tabs:hover:not(.active[data-tab-target]){
+    color: var(--admin-golden-tangerine);
+    cursor: pointer;
+}
+
+/* Hides all tabs content by default */
+.user-management-content-tabs [data-tab-content] {
+    display: none !important;
+}
+
+/* Displays the active tab content */
+.user-management-content-tabs .active[data-tab-content] {
+    display: block !important;
+}
+
+/* Table styling for editing users and admins */
+.edit-users table,
+.edit-admin table,
+.total-users {
+    width: 90%;
+}
+.total-users {
+    margin: 0 auto;
+}
+
+.total-users p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* Header styling for the user management section */
+.user-management-table .user-management-header {
+    width: 90%;
+    height: 85px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styling for the header title */
+.user-management-table .user-management-header h3 {
+    gap: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+/* Links inside the user management header */
+.user-management-table .user-management-header a,
+.content-management-table .content-management-header a {
+    width: auto;
+    height: auto;
+    text-decoration: none;
+}
+
+/* General table styling for user management */
+.user-management-table table {
+    margin: 0 auto 80px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Borders for the table body */
+.user-management-table table tbody {
+    border: 2px solid var(--background-color);
+}
+
+/* Styling for each row in the table body */
+.user-management-table table tbody tr {
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+}
+
+/* Alternate background color for odd rows */
+.user-management-table table tbody tr:nth-child(odd) {
+    border-radius: 20px 20px 0 0;
+    background-color: var(--background-color);
+}
+
+/* Styling for individual table cells */
+.user-management-table table tbody tr td {
+    width: auto;
+    padding: 13px 25px;
+    border-bottom: 1px solid var(--background-color);
+    font-size: 15px;
+}
+
+/* Icon styling inside table cells */
+.user-management-table table tbody tr td i {
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+/* Header row styling for the table */
+.user-management-table table tbody tr th {
+    background-color: var(--color-gray-7);
+    height: 50px;
+    color: var(--color-white);
+    padding: 7px 25px;
+    text-align: center;
+}
+
+/* -- Action Buttons Section -- */
+/* Wrapper for action buttons inside table rows */
+.user-management-table .action-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Edit button icon styling */
+.user-management-table .action-buttons-wrapper .edit-button i {
+    color: var(--secondary-color);
+}
+
+/* Delete button styling */
+.user-management-table .action-buttons-wrapper .delete-button button {
+    background-color: transparent;
+    border: none;
+}
+
+/* Delete icon styling */
+.user-management-table .action-buttons-wrapper .delete-button i {
+    color: var(--color-brick-red);
+}
+
+/* View user details button icon styling */
+.user-management-table .action-buttons-wrapper .view-user-details-button i {
+    color: var(--secondary-color);
+}
+
+/* General styling for all icons within action buttons */
+.user-management-table .action-buttons-wrapper i {
+    font-size: 25px;
+}
+
+/* Hover effect for action icons */
+.user-management-table .action-buttons-wrapper i:hover {
+    filter: grayscale(0.70);
+    cursor: pointer;
+}
+
+/* Disabled state for action icons */
+.user-management-table .action-buttons-wrapper .disabled i {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* Styling for disabled action icons when hovered */
+.user-management-table .action-buttons-wrapper .disabled i:hover {
+    cursor: default;
+    filter: grayscale(0);
+    color: var(--color-brick-red);
+    opacity: 0.7;
+} 
+
+
+
+
+/* ---------- add_user.php, add_admin.php, edit_user.php, edit_admin.php ---------- */
+
+/* Wrapper for the user management form */
+.user-management-form-wrapper {
+    width: 55%;
+    margin: 0 auto;
+    background-color: var(--color-white);;
+    position: relative;
+}
+
+/* Header section within the form */
+.user-management-form-wrapper .user-management-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Title styling inside the header */
+.user-management-form-wrapper .user-management-header h3 {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form container padding and overflow handling */
+.user-management-form-wrapper form {
+    padding: 25px;
+    z-index: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Container for individual input fields */
+.user-management-form-wrapper .input-container {
+    position: relative;
+    margin: 22px 0;
+}
+
+/* Text styling for error or helper messages under input fields */
+.user-management-form-wrapper .input-container p {
+    font-size: 15px;
+    font-weight: 400px;
+    color: var(--accent-color);
+    position: absolute;
+    right: 0;
+}
+
+/* Positioning and styling of the transparent span element */
+.user-management-form-wrapper .input-container span {
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    color: transparent;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* Adding before and after elements to the span for visual effects */
+.user-management-form-wrapper .input-container span:before,
+.user-management-form-wrapper .input-container span:after {
+    content: "";
+    position: absolute;
+    width: 10%;
+    opacity: 0;
+    transition: 0.3s;
+    height: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Position and appearance of the "before" element */
+.user-management-form-wrapper .input-container span:before {
+    left: 50%;
+}
+
+/* Position and appearance of the "after" element */
+.user-management-form-wrapper .input-container span:after {
+    right: 50%;
+}
+
+/* Label styling for input fields */
+.user-management-form-wrapper .input-container label {
+    font-size: 15px;
+    font-weight: 400px;
+    color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    left:15px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    pointer-events: none;
+    z-index: 30;
+    transition: 0.5s;
+}
+
+/* Input field styling */
+.user-management-form-wrapper .input {
+    width: 100%;
+    color: var(--secondary-color);
+    font-size: 17px;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--secondary-color);
+    background: none;
+    padding: 10px 20px 5px;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Styling for the icon inside the input container */
+.user-management-form-wrapper .input-container i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Styling for input container when it gains focus (e.g., label positioning) */
+.user-management-form-wrapper .input-container.focus label {
+    top: 0;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 11px;
+}
+
+/* Adjust the width and opacity of span elements when input container is focused */
+.user-management-form-wrapper .input-container.focus span:before,
+.user-management-form-wrapper .input-container.focus span:after {
+    width: 50%;
+    opacity: 1;
+}
+
+/* Autofill input field styling for webkit browsers (Chrome, Safari) */
+.user-management-form-wrapper input:-webkit-autofill,
+.user-management-form-wrapper input:-webkit-autofill:hover, 
+.user-management-form-wrapper input:-webkit-autofill:focus, 
+.user-management-form-wrapper input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px var(--color-white) inset !important;
+  -webkit-text-fill-color: var(--secondary-color) !important;
+}
+
+/* Styling for form action buttons */
+.user-management-form-wrapper .form-actions {
+    margin: 50px auto;
+    justify-content: center;
+    display: flex;
+}
+
+/* Styling for buttons in form actions */
+.user-management-form-wrapper .form-actions button {
+    border: none;
+    color: var(--color-white);
+}
+
+
+/* ---------- user_details.php ---------- */
+
+/* Header styles for the user details section */
+.user-details-header {
+    margin-left: 30px;
+}
+
+/* Styles for the header text, including gap and alignment */
+.user-details-header h3 {
+    gap: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+/* Wrapper for user details columns */
+.users-detail-wrapper {
+    width: 100%;
+    margin: 15px 0 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Defines the width for the three columns in the user details section */
+.users-detail-wrapper .left-column,
+.users-detail-wrapper .middle-column,
+.users-detail-wrapper .right-column {
+    width: calc(31%);
+}
+
+/* -- User Information Section -- */
+/* Section that holds the user information in a vertical layout */
+.user-info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+}
+
+/* Styles for the profile image container */
+.user-info-section .user-profile-img-container {
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+    background-color: var(--background-color);
+    border: 5px solid var(--background-color);
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+/* Styles for the profile image */
+.user-info-section .user-profile-img-container img {  
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: ease 0.3s;
+    border-radius: 50%;
+}
+
+/* Table styles for displaying user information */
+.user-info-section .user-details-table table {
+    margin: 20px auto 0;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid var(--background-color);
+}
+
+/* Styles for each cell in the table */
+.user-info-section .user-details-table table tr td {
+    width: auto;
+    padding: 13px 25px;
+    border-bottom: 2px solid var(--background-color);
+    font-size: 14px;
+    width: 50%;
+    color: var(--primary-color);
+}
+
+/* Styles for the first cell in each row (labels) */
+.user-info-section .user-details-table table tr td:first-child {
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--color-white);
+    font-weight: 600;
+}
+
+/* Styles for the last row in the table */
+.user-info-section .user-details-table table tr:last-child {
+    border-bottom: 3px solid var(--background-color);
+}
+
+/* -- User Mood Information Section -- */ 
+/* Container for the mood information, including border and width settings */
+.mood-info-container {
+    width: calc(31%);
+    border: 2px solid var(--background-color);
+}
+
+/* Header section for the mood info container */
+.mood-info-container .mood-info-header {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--background-color);
+}
+
+/* Header text styling within the mood info header */
+.mood-info-container .mood-info-header h3 {
+    margin: 0 0 0 30px;
+    font-size: 20px;
+}
+
+/* Section that holds the main content for mood information, with a vertical layout */
+.mood-info-container .mood-content-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* Container for the mood chart within the mood info container */
+.mood-info-container .mood-chart-container {
+    width: 65%;
+    margin: 20px auto;
+}
+
+/* Styling for the "no mood records" message when no data is available */
+.mood-info-container .no-mood-records {
+    margin-top: 50%;
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-gray-5);
+    font-style: italic;
+}
+
+/* -- User Mood Summary Section -- */
+/* Column for mood summary, with a vertical layout and space between items */
+.mood-summary-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Summary section for each mood record, with a background color */
+.mood-summary-column .mood-record-summary {
+    width: 100%;
+    background-color: var(--background-color);
+}
+
+/* Header styling for each mood record summary */
+.mood-summary-column .mood-record-summary h3 {
+    margin: 0;
+    padding: 10px 30px;
+    font-size: 20px;
+}
+
+/* Label for each record, with font styling and positioning */
+.mood-summary-column .mood-record-summary .record-label {
+    font-size: 18px;
+    color: var(--primary-color); 
+    opacity: 0.6;
+    padding-bottom: 20px;
+    margin-top: -7px;
+    text-align: center;
+}
+
+/* Count of mood records, styled with a large font size and different color */
+.mood-summary-column .mood-record-summary .record-count {
+    font-size: 40px;
+    color: var(--secondary-color);
+    margin-bottom: 0px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Wrapper for recent moods, with a light background and vertical layout */
+.mood-summary-column .recent-mood-wrapper {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+    height: 100%;
+}
+
+/* Header for the recent mood section, with flex layout for alignment */
+.mood-summary-column .recent-mood-wrapper .recent-mood-header {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styling for the recent mood section header's title */
+.mood-summary-column .recent-mood-wrapper .recent-mood-header h3 {
+    margin: 0 0 0 30px;
+    font-size: 20px;
+}
+
+/* View all button styling within the recent mood section */
+.mood-summary-column .recent-mood-wrapper .view-all-btn {
+    margin-right: 30px;
+    font-size: 13px;
+}
+
+/* Styling for the anchor link within the view all button */
+.mood-summary-column .recent-mood-wrapper .view-all-btn a {
+    color: var(--admin-golden-tangerine);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Hover effect for the view all button link */
+.mood-summary-column .recent-mood-wrapper .view-all-btn:hover {
+    color: var(--admin-golden-tangerine);
+    text-decoration: underline;
+}
+
+/* Wrapper for the recent mood post section */
+.recent-mood-wrapper .post {
+    width: 90%;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-5);
+}
+
+/* Styling for the record date inside each post */
+.recent-mood-wrapper .post .record-date {
+    font-size: 13px;
+    margin-left: 15px;
+}
+
+/* Styling for the mood label inside each post */
+.recent-mood-wrapper .post .mood-label {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-left: 13%;
+}
+
+/* Wrapper for the mood feeling section inside each post */
+.recent-mood-wrapper .post .mood-feeling {
+    margin: 10px auto;
+    width: 120px;
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+    font-size: 13px;
+    color: var(--color-gray-5);
+}
+
+/* Styling for the individual mood feeling paragraphs */
+.recent-mood-wrapper .post .mood-feeling p {
+    margin: 6px auto;
+    padding: 16px;
+    color: var(--color-gray-4);
+    border-radius: 20px;
+    border: 1px solid var(--color-gray-2);
+    transition: ease 0.2s;
+}
+
+/* Styling for additional feelings under each mood feeling */
+.recent-mood-wrapper .post .mood-feeling .additional-feelings {
+    font-size: 11px;
+    margin-top: -5px;
+}
+
+/* No mood records found message styling */
+.recent-mood-wrapper .no-mood-records {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 60px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-gray-5);
+    font-style: italic;
+}
+
+/* -- User Feed Posts Section -- */
+/* Wrapper for the bottom section of user details */
+.user-detalis-bottom-wrapper {
+    width: 100%;
+}
+
+/* Wrapper for user posts, with scrollable content */
+.user-detalis-bottom-wrapper .user-posts-wrapper {
+    width: 98%;
+    height: 70vh;
+    overflow: auto;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    color: var(--color-gray-5);
+}
+
+/* Styling for the list of user posts */
+.user-posts-list {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-bottom: 20px;
+}
+
+/* Header styling for the user posts list */
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .posts-header {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px 0;
+    background-color: var(--background-color);
+}
+
+/* Styling for the header text inside the posts header */
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .posts-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+/* Styling for each individual user post */
+.user-posts-wrapper .user-posts-list .user-post {
+    width: 90%;
+    margin: 0 auto;
+    background-color: var(--color-white);
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-5);
+}
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .user-post {
+    justify-content: space-between;
+}
+
+/* Styling for hidden posts */
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .post-hidden {
+    background-color: #e863632b !important;
+} 
+
+/* Styling for timestamp section */
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .post-timestamp {
+    width: 150px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for date and time within timestamp */
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .post-timestamp .date {
+    margin: 0 !important;
+    font-size: 13px;
+    margin-left: 15px;
+    color: var(--color-gray-5);
+    opacity: 0.7;
+}
+.user-detalis-bottom-wrapper .user-posts-wrapper .user-posts-list .post-timestamp .time {
+    font-size: 11px;
+    margin: 0 !important;
+}
+
+/* Styling for the main content section */
+.user-posts-wrapper .user-posts-list .user-post .post-main-content {
+    width: 100%;
+    display: flex;
+}
+
+/* Styling for mood wrapper */
+.user-posts-wrapper .user-posts-list .user-post .post-main-content .post-mood-wrapper {
+    width: 10%;
+    display: flex;
+    align-items: center
+}
+
+/* Styling for mood label */
+.user-posts-wrapper .user-posts-list .user-post .post-main-content .post-mood-label {
+    margin: 0 !important;
+    font-size: 20px;
+    color: var(--primary-color);
+    margin-left: 13%;
+}
+
+/* Styling for post content */
+.user-posts-wrapper .user-posts-list .user-post .post-main-content .post-content {
+    width: 80%;
+    padding: 20px;
+    font-size: 13px;
+    color: var(--primary-color);
+}
+
+/* Styling for post interactions (likes, comments, visibility toggle) */
+.user-posts-wrapper .user-post .post-interactions {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Styling for likes section */
+.user-posts-wrapper .user-post .post-interactions .post-likes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Styling for comments section */
+.user-posts-wrapper .user-post .post-interactions .post-comments {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Styling for text within likes and comments */
+.user-posts-wrapper .user-post .post-interactions .post-likes p,
+.user-posts-wrapper .user-post .post-interactions .post-comments p {
+    margin: 5px;
+}
+
+/* Styling for visibility toggle section */
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle {
+    padding: 10px;
+    border-left: 1px solid var(--color-gray-4) !important;
+}
+
+/* Styling for icons inside the visibility toggle */
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle i {
+    font-size: 25px;
+    color: var(--color-gray-5);
+}
+
+/* Styling for visibility toggle controls (hidden/visible options) */
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle .post-hidden-controls,
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle .post-visible-controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;  
+}
+
+/* Styling for buttons within visibility toggle controls */
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle .post-hidden-controls button,
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle .post-visible-controls button {
+    background-color: transparent;
+    border: none;
+    color: var(--admin-golden-tangerine);
+}
+
+/* Styling for hover state of visibility toggle buttons */
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle .post-hidden-controls button:hover,
+.user-posts-wrapper .user-post .post-interactions .post-visibility-toggle .post-visible-controls button:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Adjusts the top margin of the disapprove button */
+.dissaprove-button {
+    margin-top: -10px;
+}
+
+/* Styling for "no mood records" message */
+.user-posts-list .no-mood-records {
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 60px 0;
+    background-color: var(--color-white);
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-gray-5);
+    font-style: italic;
+}
+
+/* Styling for alert messages in the user posts list */
+.user-posts-list .alert {
+    width: 90%;
+    margin: 0 auto 10px;
+}
+
+/* Styling for post moods (great, good, okay, etc.) */
+.recent-mood-wrapper .post .great-mood,
+.user-posts-list .user-post .great-mood {
+    background: linear-gradient(transparent 72%, var(--admin-golden-tangerine) 87%) !important;
+}
+
+.recent-mood-wrapper .post .good-mood,
+.user-posts-list .user-post .good-mood {
+    background: linear-gradient(transparent 72%, var(--admin-color-golden-honey) 87%) !important;
+}
+
+.recent-mood-wrapper .post .okay-mood,
+.user-posts-list .user-post .okay-mood {
+    background: linear-gradient(transparent 72%, var(--admin-color-aqua-green) 87%) !important;
+}
+
+.recent-mood-wrapper .post .bad-mood,
+.user-posts-list .user-post .bad-mood {
+    background: linear-gradient(transparent 72%, var(--admin-color-sky-blue) 87%) !important;
+}
+
+.recent-mood-wrapper .post .awful-mood,
+.user-posts-list .user-post .awful-mood {
+    background: linear-gradient(transparent 72%, var(--admin-color-deep-teal) 87%) !important;
+}
+
+
+/* ---------- user_tracking_records.php ---------- */
+
+/* Header styling for the user tracking records section */
+.user-tracking-records-header {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Styling for the header title within the user tracking records section */
+.user-tracking-records-header h3 {
+    gap: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+/* Wrapper for the user tracking records */
+.user-tracking-records-wrapper {
+    width: 100%;
+    margin: 15px 0 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Styling for the user posts wrapper inside the user tracking records section */
+.user-tracking-records-wrapper .user-posts-wrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Styling for the posts header within the user posts list */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .posts-header {
+    width: 100%;
+    padding: 10px 0;
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+/* Header title styling within the posts header */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .posts-header h3 {
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+/* Styling for the post date text within each user post */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-date {
+    font-size: 13px;
+    margin-left: 15px;
+    color: var(--color-gray-5);
+    opacity: 0.7;
+}
+
+/* Styling for the mood label inside each user post */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .mood-label {
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-left: 20px;
+}
+
+/* Styling for the feelings section within the user post */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-feelings {
+    width: 110px;
+    margin: 10px 0;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-gray-5);
+    text-align: center;
+}
+
+/* Main content section styling for each user post */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-main-content {
+    width: 35%;
+    margin: 0 20px;
+    padding: 0 10px;
+    display: flex;
+    column-gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Paragraph styling within the post main content */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-main-content p {
+    margin: 5px 0;
+}
+
+/* Styling for the span elements inside the post main content */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-main-content span {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 10px;
+}
+
+/* Styling for icons within the span elements */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-main-content span i {
+    font-size: 20px;
+    margin: 5px 0;
+    opacity: 0.8;
+}
+
+/* Styling for the sleep section within the user post */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-sleep {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Styling for sleep span text */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-sleep span {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Styling for the memo section within each user post */
+.user-tracking-records-wrapper .user-posts-wrapper .user-posts-list .user-post .post-memo {
+    max-width: 20%;
+    margin: 10px;
+    padding: 0 20px;
+    margin-right: 0;
+    font-size: 12px;
+    text-align: justify;
+}
+
+
+/* ---------- manage_content.php ---------- */
+
+/* Wrapper for the content management navigation */
+.content-management-navigation-wrapper {
+    margin: 0 auto;
+    margin-top: -20px;
+    width: 100%;
+    background-color:var(--color-soft-amber);
+    text-align: center;
+}
+
+/* Navigation list styling */
+.content-management-navigation-wrapper ul {
+    margin: 20px auto;
+    font-size: 14px;
+}
+
+/* Tab buttons inside the navigation */
+.content-management-navigation-wrapper [data-tab-target] {
+    padding: 0 20px;
+    margin: 0;
+    width: 12.5%;
+    font-size: 12px;
+    border-radius: 0;
+    color: var(--color-gray-5);
+    transition: ease all 0.2s;
+}
+
+/* Active tab styling */
+.content-management-navigation-wrapper .active[data-tab-target] {
+    font-size: 12px;
+    color: var(--color-white);
+    background-color: var(--accent-color);
+}
+
+/* Hover effect for tabs */
+.content-management-navigation-wrapper .tabs:hover:not(.active[data-tab-target]){
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+/* Navigation list structure */
+.content-management-navigation ul,
+.user-management-navigation ul {
+    display: flex;
+    padding-left: 0;
+    justify-content: space-around;
+    list-style: none;
+    color: var(--color-gray-4);
+}
+
+/* Styling for text within navigation list items */
+.content-management-navigation ul li span,
+.user-management-navigation ul li span {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Japanese label font size */
+.content-management-navigation ul li .japanese-label,
+.user-management-navigation {
+    font-size: 10px;
+}
+
+/* Main wrapper for content management */
+.content-management-wrapper ul li .japanese-label {
+    margin: 40px auto;
+}
+
+/* Default state for tab content: hidden */
+.content-management-wrapper [data-tab-content] {
+    display: none;
+}
+
+/* Active tab content: visible */
+.content-management-wrapper .active[data-tab-content] {
+    display: block;
+}
+
+/* Main table styling */
+.content-management-table table {
+    margin: 0 auto 80px;
+    width: 60%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Table body border */
+.content-management-table table tbody {
+    border: 2px solid var(--background-color);
+}
+
+/* Table rows styling */
+.content-management-table table tbody tr {
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+}
+
+/* Alternate background for odd rows */
+.content-management-table table tbody tr:nth-child(odd) {
+    border-radius: 20px 20px 0 0;
+    background-color: var(--background-color);
+}
+
+/* Table cells styling */
+.content-management-table table tbody tr td {
+    width: auto;
+    padding: 13px 25px;
+    border-bottom: 1px solid var(--background-color);
+    font-size: 15px;
+}
+
+/* Table cell icons */
+.content-management-table table tbody tr td i {
+    font-size: 30px;
+    color: var(--primary-color);
+}
+
+/* Table headers styling */
+.content-management-table table tbody tr th {
+    background-color: var(--color-gray-7);
+    height: 50px;
+    color: var(--color-white);
+    padding: 7px 25px;
+    text-align: center;
+}
+
+/* Header container for the content table */
+.content-management-table .content-management-header {
+    width: 60%;
+    height: 85px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Header title styling */
+.content-management-table .content-management-header h3 {
+    gap: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+/* -- Action Buttons Section -- */
+/* Wrapper for action buttons */
+.content-management-table .action-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+/* Delete button styling */
+.content-management-table .action-buttons-wrapper .button-delete button {
+    background-color: transparent;
+    border: none;
+}
+
+/* Action button icons */
+.content-management-table .action-buttons-wrapper i {
+    font-size: 27px;
+}
+
+/* Edit button icon */
+.content-management-table .action-buttons-wrapper .button-edit i {
+    color: var(--secondary-color);
+}
+
+/* Edit and delete icon sizes */
+.content-management-table .action-buttons-wrapper .button-edit .fa-pen-to-square,
+.content-management-table .action-buttons-wrapper .button-delete .fa-trash {
+    font-size: 25px;
+}
+
+/* Delete button icon */
+.content-management-table .action-buttons-wrapper .button-delete i {
+    color: var(--color-brick-red);
+}
+
+/* Disabled button styling */
+.content-management-table .action-buttons-wrapper .disabled-btn i {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* Hover effect for action icons */
+.content-management-table .action-buttons-wrapper i:hover {
+    filter: grayscale(0.70);
+    cursor: pointer;
+}
+
+
+/* ---------- add_feeling.php, add_activity.php, add_people.php, add_locations.php, add_food.php, add_weather.php, add_goals.php, add_goal_category.php 
+edit_feeling.php, edit_activity.php, edit_people.php, edit_locations.php, edit_food.php, edit_weather.php, edit_goals.php, edit_goal_category.php ---------- */
+
+/* Wrapper for the content management form */
+.content-management-form-wrapper {
+    width: 55%;
+    margin: 10px auto;
+    background-color: var(--color-white);;
+}
+
+/* Header styling for the form */
+.content-management-form-wrapper .content-management-header {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.content-management-form-wrapper .content-management-header h3 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input field container */
+.content-management-form-wrapper .input-container {
+    position: relative;
+    margin: 22px 0;
+}
+
+/* Label styling inside input fields */
+.input-name label {
+    font-size: 15px;
+    font-weight: 400px;
+    color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    left:15px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    pointer-events: none;
+    z-index: 30;
+    transition: 0.5s;
+}
+
+/* Focused input field label */
+.content-management-form-wrapper .input-name.focus label {
+    top: 0;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 11px;
+}
+
+/* Styling for input helper spans */
+.content-management-form-wrapper .input-container span {
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 16px;
+    transform: translateY(-50%);
+    padding: 0 8px;
+    color: transparent;
+    pointer-events: none;
+    z-index: 20;
+}
+
+/* Animations for spans in focused input */
+.content-management-form-wrapper .input-container span:before,
+.content-management-form-wrapper .input-container span:after {
+    content: "";
+    position: absolute;
+    width: 10%;
+    opacity: 0;
+    transition: 0.3s;
+    height: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Left span positioned relative to the center */
+.content-management-form-wrapper .input-container span:before {
+    left: 50%;
+}
+
+/* Right span positioned relative to the center */
+.content-management-form-wrapper .input-container span:after {
+    right: 50%;
+}
+
+/* State when input container is focused */
+.content-management-form-wrapper .input-container.focus span:before,
+.content-management-form-wrapper .input-container.focus span:after {
+    width: 50%;
+    opacity: 1;
+}
+
+/* Input field styling */
+.content-management-form-wrapper .input-container .input {
+    width: 100%;
+    color: var(--secondary-color);
+    font-size: 17px;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--secondary-color);
+    background: none;
+    padding: 10px 20px 5px;
+    transition: 0.3s;
+}
+
+/* Error message styling below inputs */
+.content-management-form-wrapper .input-container p {
+    font-size: 15px;
+    font-weight: 400px;
+    color: var(--accent-color);
+    margin-left:15px;
+    margin-bottom: 5px;
+}
+ 
+/* Icon styling within the input fields */
+.content-management-form-wrapper .input-container i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary-color);
+}
+
+/* Icon selection section styling */
+.content-management-form-wrapper .input-container-icons {
+    margin-top: 30px;
+}
+
+/* Paragraph inside the icon selection container */
+.content-management-form-wrapper .input-container-icons p {
+    margin-left: 23px;
+}
+
+/* Wrapper for all selectable icons */
+.content-management-form-wrapper .input-container-icons .icons-wrapper {
+    width: 60%;
+    border: 2px solid var(--secondary-color);
+    position: relative;
+}
+
+/* Layout for the icons inside the wrapper */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+/* Hover effect for icons */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons input:hover,
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons :hover i {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Styling for each icon container inside the radio button section */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons div {
+    width: 25%;
+    padding: 35px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Label styling for each icon */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons div label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Icon (font-awesome or similar) styling inside the label */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons div label i {
+    font-size: 40px;
+    color: var(--primary-color);
+    position: absolute;
+    top: 29%;
+    transform: translate(-50%, -45%);
+}
+
+/* Hides the default radio button input for a cleaner design */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons input[type='radio'] {
+    visibility:hidden;
+}
+
+/* Custom styling for the visual representation of the radio button */
+/* Adds a visible circular indicator to replace the hidden radio input */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons input[type='radio']:after {
+    width: 60px;
+    height: 60px;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    background-color: transparent;
+    content: '';
+    display: inline-block;
+    border-radius: 15px;
+    border: 1px solid var(--color-gray-2);
+    visibility: visible;
+    z-index: 10;
+}
+
+/* Styling for selected icon */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons input[type='radio']:checked:after {
+    width: 60px;
+    height: 60px;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    background-color: transparent;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 4px solid var(--accent-color);
+    z-index: 10;
+}
+
+/* Styles for the button to view all available icons */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .view-all-icons-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px 15px;
+    font-size: 12px;
+    color: var(--accent-color);
+    position: relative;
+}
+
+/* Icon styling for the view-all-icons button */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .view-all-icons-button i {
+    top: 46%;
+    color: var(--accent-color);
+}
+
+/* Hover effect for the button text */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .view-all-icons-button p:hover {
+    cursor: pointer;
+}
+
+/* Styling for the button text */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .view-all-icons-button p {
+    position: relative;
+    text-decoration: none;
+    margin: 0;
+    margin-right: 12px;
+    font-size: 12px;
+    color: var(--accent-color);
+}
+
+/* Adds a line below the text for visual enhancement */
+/* Positioned at the bottom of the text container */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .view-all-icons-button p:after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+}
+
+/* Display icon styling */
+.content-management-form-wrapper .input-container-icons #display-icon {
+    position: absolute;
+    top: 50%;
+    right: -25%;
+    font-size: 90px;
+    transform: translateY(-50%);
+    color: var(--accent-color);
+}
+
+/* Wrapper for the buttons */
+.content-management-form-wrapper .button-wrapper {
+    margin: 50px auto;
+    justify-content: center;
+    display: flex;
+}
+
+/* Button styling */
+.content-management-form-wrapper .button-wrapper button {
+    /* width: 160px; */
+    border: none;
+    color: var(--color-white);
+}
+
+/* Relative positioning for elements with show IDs */
+#show1, #show2, #show3, #show4, #show5, #show6, #show7, #show8 {
+    position: relative;
+}
+
+/* Error icon styling */
+.content-management-form-wrapper .input-container-icons .icons-wrapper .icons .error-icon {
+    width: auto !important;
+    padding: 0 !important;
+    position: absolute;
+    right: -3px;
+    bottom: -32px;
+}
+
+/* Modal styling */
+.content-management-form-wrapper .modal {
+    display: none; 
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+/* Modal content styling */
+.content-management-form-wrapper .modal-content {
+    width: 50%;
+    margin: 10% auto;
+    padding: 30px 20px;
+    background-color: var(--color-off-white);
+    border: 1px solid var(--color-gray-3);
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Styles for content div inside the modal */
+.content-management-form-wrapper .modal-content div {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+}
+
+/* Modal heading styles */
+.content-management-form-wrapper .modal-content h3 {
+    margin: 15px 0 !important;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Modal title container */
+.content-management-form-wrapper .modal-title {
+    width: 87%;
+    margin: 0 auto !important;
+}
+
+/* Modal icons section */
+.content-management-form-wrapper .modal-content .modal-icons {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid var(--secondary-color);;
+}
+
+/* Individual icon container */
+.content-management-form-wrapper .modal-content .modal-icons div {
+    width: 12%;
+    position: relative;
+    padding-top: 10px;
+}
+
+/* Icon label styling */
+/* Positions the icon centrally within its container */
+.content-management-form-wrapper .modal-content .modal-icons div label i {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+}
+
+/* Hover effect for icons */
+/* Adds interactivity to icons with a pointer cursor and reduced opacity */
+.content-management-form-wrapper .modal-content .modal-icons :hover i,
+.content-management-form-wrapper .modal-content .modal-icons i:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* Buttons inside the modal */
+.modal-main .select-button {
+    width: 100px;
+    padding: 15px;
+    border-radius: 25px;
+    border: 2px solid var(--accent-color);
+    color: var(--color-white);
+    background-color: var(--accent-color);
+    transition: ease 0.2s;
+    align-self: center;
+}
+
+/* Base styles for dropdown labels */
+.dropdown-container label {
+    font-weight: 400px;
+    color: var(--accent-color);
+    position: absolute;
+    top: 50%;
+    left:15px;
+    transform: translateY(-50%);
+    padding: 5px 8px;
+    pointer-events: none;
+    z-index: 30;
+    transition: 0.5s;
+}
+
+/* Adjust label position when dropdown is focused */
+.dropdown-container.focus label {
+    top: 0;
+    transform: translateY(-50%);
+    left: 15px;
+    font-size: 11px;
+}
+
+/* Style for animated spans inside the focused dropdown */
+.dropdown-container.focus span:before,
+.dropdown-container.focus span:after {
+    width: 50%;
+    opacity: 1;
+}
+
+/* Label positioning for textarea-specific dropdown */
+.dropdown-container.textarea label {
+    top: 16px;
+    transform: translateY(0);
+}
+
+
+/* ---------- user_feed_analytics ---------- */
+
+/* Wrapper for the analytics section */
+.analytics-detail-wrapper {
+    width: 100%;
+    margin: 15px 0 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* -- Feed Analytics Left Section -- */
+/* Left section of analytics details */
+.analytics-left-section {
+    width: 43%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Top summary area within the left analytics section */
+.analytics-left-section .analytics-summary-top {
+    width: 100%;
+    height: 170px;
+    display: flex;
+    gap: 10px;
+}
+
+/* -- Summary Posts Section -- */
+/* Styles for individual post summaries */
+.analytics-left-section .analytics-summary-top .summary-posts {
+    width: 30%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* Post count text inside the summary */
+.analytics-left-section .analytics-summary-top .summary-posts p {
+    margin: 0;
+    font-size: 35px;
+    color: var(--primary-color);
+    font-weight: 400;
+    text-align: center;
+}
+
+/* Post description text inside the summary */
+.analytics-left-section .analytics-summary-top .summary-posts h3 {
+    margin: 0;
+    font-size: 18px;
+    opacity: 0.6;
+    text-align: center;
+}
+
+/* -- Interactions Section -- */
+/* Styles for the interactions summary section (likes/comments) */
+.analytics-left-section .analytics-summary-top .summary-interactions {
+    width: 68%;
+    border: 3px solid var(--background-color);
+}
+
+/* Header styles for the interactions summary */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-header h3 {
+    margin: 0;
+    padding-left: 30px !important;
+    font-size: 20px;
+    padding: 10px 0;
+    background-color: var(--background-color);
+}
+
+/* Container for interaction details (likes and comments) */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Styles for likes and comments sections */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .likes-section,
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .comments-section {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Shared styles for content inside likes and comments sections */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .likes-section .interaction-content,
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .comments-section .interaction-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Icon styles for likes and comments */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .likes-section i,
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .comments-section i {
+    font-size: 35px;
+    color: var(--secondary-color);
+}
+
+/* Text styles for likes and comments */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .likes-section p,
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .comments-section p {
+    font-size: 30px;
+    margin: 0px;
+    color: var(--secondary-color);
+}
+
+/* Label styles for likes and comments */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .likes-section .interaction-label,
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .comments-section .interaction-label {
+    text-align: center;
+    margin-top: -3px;
+}
+
+/* Text styles for interaction labels (e.g., "Likes", "Comments") */
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .likes-section .interaction-label p,
+.analytics-left-section .analytics-summary-top .summary-interactions .summary-interactions-content .comments-section .interaction-label p {
+    font-size: 15px;
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+/* Styles for the bottom summary area */
+.analytics-left-section .analytics-summary-bottom {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+/* -- Analytics Chart Section -- */
+/* Chart section within the bottom summary */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section {
+    width: 57%;
+    border: 3px solid var(--background-color);
+    padding: 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Mood chart container styles */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-chart-container {
+    width: 70%;
+    margin: 20px auto 30px;
+}
+
+/* Section for mood count details */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-count-section {
+    margin: 30px auto;
+}
+
+/* Mood count item styles */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-count-section .mood-count-item {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for individual mood count items */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-count-section .mood-count-item p {
+    margin: 2px 0;
+}
+
+/* Styling for the mood bar indicator */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-count-section .mood-bar {
+    width: 40px;
+    height: 8px;
+}
+
+/* Styling for the mood name text */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-count-section .mood-name {
+    color: var(--primary-color);
+}
+
+/* Styling for the mood total count text */
+.analytics-left-section .analytics-summary-bottom .analytics-chart-section .mood-count-section .mood-total-count {
+    margin-left: 30px;
+    font-size: 13px;
+    color: var(--color-gray-5);
+}
+
+/* -- Top Contributors Section -- */
+/* Styling for the top contributors section */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section {
+    width: 41%;
+    border: 2px solid var(--background-color);
+    background-color: var(--background-color);
+    padding: 0 0 10px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px 0px;
+}
+
+/* Styling for the containers holding top poster, commenter, and liker information */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .top-poster-container,
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .top-commenter-container,
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .top-liker-container {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Adds a bottom border between sections (poster and commenter containers) */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .top-poster-container,
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .top-commenter-container {
+    border-bottom: 1px solid var(--color-soft-amber);
+}
+
+/* Styling for headers and paragraphs inside the top contributors section */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section h4,
+.analytics-left-section .analytics-summary-bottom .top-contributors-section p {
+    margin: 0;
+}
+
+/* Styling for header (h4) inside the top contributors section */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section h4 {
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+/* Styling for icons inside the top contributors section */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section i {
+    font-size: 35px;
+    margin: 5px 0;
+    color: var(--primary-color);
+}
+
+/* Styling for paragraphs inside the top contributors section */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section p {
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+/* Styling for contributor username */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .contributor-username {
+    opacity: 1;
+}
+
+/* Styling for contributor username links */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .contributor-username a {
+    font-size: 16px;
+    color: var(--color-golden-orange);
+    opacity: 1;
+    text-decoration: none;
+}
+
+/* Adds an underline on hover for contributor username links */
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .contributor-username a:hover {
+    text-decoration: underline;
+}
+.analytics-left-section .analytics-summary-bottom .top-contributors-section .contributor-username span {
+    color: var(--color-golden-orange);
+    font-size: 12px;
+}
+
+/* -- Feed Analytics Right Section -- */
+/* Styling for the right section of the analytics */
+.analytics-right-section {
+    width: 55%;
+}
+
+/* -- Posts on Feed Navigation  -- */
+/* Styling for the posts navigation bar */
+.analytics-right-section .posts-display-navigation {
+    background-color: var(--color-soft-amber);
+    position: relative;
+}
+
+/* Styling for the list items in the posts navigation bar */
+.analytics-right-section .posts-display-navigation ul {
+    margin-top: 0;
+    display: flex;
+    padding-left: 0;
+    justify-content: space-around;
+    list-style: none;
+    color: var(--color-gray-4);
+    font-size: 14px;
+}
+
+/* Styling for the post containers (all, showing, hidden posts) */
+#allPosts, #showingPosts , #hiddenPosts {
+    height: 90vh;
+    overflow: auto;
+}
+
+/* Styling for each tab in the posts display navigation */
+.analytics-right-section .posts-display-navigation [data-tab-target] {
+    width: calc(100%/3);
+    padding: 5px 20px; 
+    border-radius: 0px;
+    font-size: 14px;
+    width: 30%;
+    margin: 0;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+/* Styling for tab hover effects */
+.analytics-right-section [data-tab-target]:hover {
+    cursor: pointer;
+    color: var(--admin-golden-tangerine);
+}
+
+/* Styling for the active tab in the posts display navigation */
+.analytics-right-section .posts-display-navigation .active[data-tab-target] {
+    color: var(--color-white);
+    background-color: var(--accent-color);
+}
+
+/* -- Posts on Feed Contents Section  -- */
+/* Hides tab content by default */
+.analytics-right-section [data-tab-content] {
+    display: none;
+}
+
+/* Displays the content of the active tab */
+.analytics-right-section  .active[data-tab-content] {
+    display: block;
+}
+
+/* Styling for the "requested" indicator */
+.analytics-right-section .posts-display-navigation .requested {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: var(--color-red);
+}
+
+/* Styling for the posts header */
+.analytics-right-section .posts-header {
+    width: 100%;
+    background-color: var(--background-color);
+}
+
+/* Styling for the header text in the posts section */
+.analytics-right-section .posts-header h3 {
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+/* Styling for hidden posts */
+.analytics-right-section .user-posts-wrapper .hidden-post {
+    background-color: #e863632b !important;
+}
+
+/* Styling for post time container */
+.analytics-right-section .user-posts-wrapper .post-time {
+    width: 190px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for post time links */
+.analytics-right-section .user-posts-list .user-post .post-time a {
+    color: var(--admin-golden-tangerine);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* Styling for post time link hover effect */
+.analytics-right-section .user-posts-list .user-post .post-time a:hover {
+    text-decoration: underline;
+}
+
+/* Removes margin for post time paragraph */
+.analytics-right-section .user-posts-list .user-post .post-time a p {
+    margin: 0;
+}
+
+/* Styling for post date and time */
+.analytics-right-section .user-posts-list .user-post .date,
+.analytics-right-section .user-posts-list .user-post .time {
+    margin: 0 !important;
+    font-size: 11px;
+}
+
+/* Styling for main content of user posts */
+.analytics-right-section .user-posts-wrapper .user-post .main-post-content {
+    width: 100%;
+    display: flex;
+}
+
+/* Styling for mood indicator in user posts */
+.analytics-right-section .user-posts-wrapper .user-post .main-post-content .post-mood-wrapper {
+    width: 20%;
+    display: flex;
+    align-items: center
+}
+
+/* Styling for mood label */
+.analytics-right-section .user-posts-wrapper .user-post .main-post-content .post-mood-label {
+    margin: 0 !important;
+}
+
+/* Styling for post content in user posts */
+.analytics-right-section .user-posts-wrapper .user-post .main-post-content .post-content {
+    width: 80%;
+    padding: 10px;
+    font-size: 13px;
+    color: var(--primary-color);
+}
+
+/* Styling for the "no posts" message */
+.analytics-right-section .user-posts-wrapper .no-posts {
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0;
+    font-size: 12px;
+    background-color: var(--color-white);
+    color: gray;
+    text-align: center;
+    font-style: italic;
+}
+
+
+/* ---------- manage_blocked_words.php ---------- */
+
+/* General container for the blocked words section */
+.blocked-words-container {
+    width: 100%;
+    margin: 0 auto 60px;
+}
+
+/* Header styling for the blocked words section */
+.blocked-words-container h3 {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for displaying the total number of blocked words */
+.blocked-words-container .total-blocked-words {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    color: var(--primary-color);
+}
+
+/* Resets margins for paragraph elements inside the blocked words section */
+.blocked-words-container .total-blocked-words p {
+    margin: 0;
+}
+
+/* Styling for the form to add a new blocked word */
+.blocked-words-container .add-blocked-word-form {
+    width: 800px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: end;
+}
+
+/* Input field styling for adding a blocked word */
+.blocked-words-container .add-blocked-word-form input {
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 200px;
+    margin: 0 auto;
+    color: var(--primary-color);
+    border: 1px solid var(--color-gray-3);
+}
+
+/* Button styling for adding a blocked word */
+.blocked-words-container .add-blocked-word-form button {
+    margin: 0 0 0 5px;
+    background-color: var(--accent-color);
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+    transition: ease 0.2s;
+    border: none;
+    color: var(--color-white);
+}
+
+/* Button hover styling */
+.blocked-words-container .add-blocked-word-form button:hover {
+    cursor: pointer;
+    background-color: var(--secondary-color);
+}
+
+/* Table styling for blocked words */
+.blocked-words-container .blocked-words-table table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid var(--background-color);
+}
+
+/* Table cell styling */
+.blocked-words-container .blocked-words-table table tbody tr td {
+    width: 350px;
+    padding: 13px 25px;
+    border-bottom: 2px solid var(--background-color);
+    border-top: 2px solid var(--background-color);
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+/* Form inside table cells */
+.blocked-words-container .blocked-words-table table tbody form {
+    float: right;
+    margin: 0 !important;
+}
+
+/* Button styling inside forms */
+.blocked-words-container .blocked-words-table table tbody form button {
+    background-color: transparent;
+    border: none;
+}
+
+/* Hover effect for buttons inside forms */
+.blocked-words-container .blocked-words-table table tbody form button:hover {
+    cursor: pointer;
+}
+
+/* Styling for icons inside buttons */
+.blocked-words-container .blocked-words-table table tbody form button i {
+    font-size: 20px;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+/* Row styling for table: alternating background colors */
+.blocked-words-container .blocked-words-table table tbody tr:nth-child(odd){
+    background-color: var(--background-color);
+} 
+
+
+/* -------- admin_profile.php -------- */ 
+
+/* admin_profile.php */
+.admin-profile-wrapper .message-text {
+    margin-bottom: 20px;
+}
+
+
+/* -------- account_edit.php -------- */
+
+/* Header styling for account edit section */
+.account-edit-table h3 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Additional styling for English title in the header */
+.account-edit-table h3 .english-title {
+    margin-bottom: 20px;
+}
+
+/* Adds bottom margin to the message text in the account edit section */
+.account-edit-wrapper .message-text {
+    margin-bottom: 20px;
+}
+
+
+/* ---------- Mood-Based Styles for Mood Elements and Goal Icons ---------- */
+
+/* Styles for "Great" mood elements */
+.great-mood {
+    background-color: var(--admin-golden-tangerine) !important;  /* Sets the background color for "Great" mood elements */
+}
+tbody tr td .fa-face-laugh-beam {
+    color: var(--great-mood-color) !important; /* Sets the color for elements associated with the "Great" mood */
+}
+
+/* Styles for "Good" mood elements */
+.good-mood {
+    background-color: var(--admin-color-golden-honey) !important; /* Sets the background color for "Good" mood elements */
+}
+tbody tr td .fa-face-smile-beam {
+    color: var(--good-mood-color) !important; /* Sets the color for elements associated with the "Good" mood */
+}
+
+/* Styles for "Okay" mood elements */
+.okay-mood {
+    background-color: var(--admin-color-aqua-green) !important; /* Sets the background color for "Okay" mood elements */
+}
+tbody tr td .fa-face-meh {
+    color: var(--okay-mood-color) !important; /* Sets the color for elements associated with the "Okay" mood */
+}
+
+/* Styles for "Bad" mood elements */
+.bad-mood {
+    background-color: var(--admin-color-sky-blue) !important; /* Sets the background color for "Bad" mood elements */
+}
+tbody tr td .fa-face-frown {
+    color: var(--bad-mood-color) !important; /* Sets the color for elements associated with the "Bad" mood */
+}
+
+/* Styles for "Awful" mood elements */
+.awful-mood { 
+    background-color: var(--admin-color-deep-teal) !important; /* Sets the background color for "Awful" mood elements */
+}
+tbody tr td .fa-face-tired {
+    color: var(--awful-mood-color) !important; /* Sets the color for elements associated with the "Awful" mood */
+}
+
+
+

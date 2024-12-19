@@ -1,0 +1,986 @@
+/**
+ * File Name: shared.css
+ * Author: Moa Burke
+ * Date: 2024-12-17
+ * Description: Common styles for both user and admin pages of the RETHINK project. 
+ * This file includes global styles, typography, and reusable components.
+ *
+ * Features:
+ * - Defines base styles for typography, buttons, and forms.
+ * - Implements consistent spacing, alignment, and branding elements.
+ * - Provides shared responsive rules for a cohesive design.
+ *
+ * Notes:
+ * - Ensure this file is loaded before specific CSS files (user.css, admin.css).
+ */
+/* Define color scheme for the website */
+:root {
+    --primary-color: #27627E;
+    --secondary-color: #409290;
+    --accent-color: #f1b24a;
+    --background-color: #eef5f5;
+
+    --color-white: #fff;
+    --color-off-white: #fefefe;
+    --color-gray-2: #cdcdcd;
+    --color-gray-3: #A6A6A6;
+    --color-gray-5: #6d6d6d;
+    --color-gray-6: #4d4d4d;
+    --color-gray-7: #26282ac6;
+    --color-deep-teal: #1f4f65;
+    --color-vibrant-lime: #6aac38;
+    --color-translucent-green: #6aac381f;
+    --color-fiery-red: #eb4040;
+    --color-crimson-red: #ac3838;
+    --color-faded-crimson: #ac38381c;
+
+    --great-mood-color: #812061; /* Color for Great mood */
+    --good-mood-color: #EB6694; /* Color for Good mood */
+    --okay-mood-color: #8BCCCA; /* Color for Okay mood */
+    --bad-mood-color: #9DC3E6; /* Color for Bad mood */
+    --awful-mood-color: #27627E; /* Color for Awful mood */
+}
+
+body {
+    margin: 0;
+    font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium",
+    "游ゴシック", "Yu Gothic", sans-serif;
+    color: var(--primary-color);
+}
+
+
+/* ---------- Sidebar Navigation Section ---------- */
+
+/* Sidebar Container - positions the sidebar on the left side of the screen */
+.sidebar-navigation {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    background-color: var(--background-color);
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* This class styles the text for the admin header */
+.header-admin-text {
+    text-align: center;
+    font-size: 30px;
+    color: var(--accent-color);
+}
+
+.navigation-user {
+    margin-top: 80px;
+}
+
+/* Navigation container within the sidebar, defines the layout of navigation links */
+.sidebar-navigation nav {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+}
+
+/* Unordered list inside the navigation container - lays out the navigation items */
+.sidebar-navigation nav ul {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+    font-family: 'Gudea', sans-serif;
+    
+}
+
+/* Individual list items in the sidebar */
+.sidebar-navigation nav ul li {
+    list-style: none;
+    margin: 10px 30px;
+}
+
+/* Link styling inside the navigation */
+header nav a {
+    text-decoration: none;
+    color: var(--primary-color);
+    align-self: center;
+}
+
+/* Styling for links inside the unordered list */
+.sidebar-navigation nav ul a {
+    width: 100%;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: var(--primary-color);
+    align-self: center;
+}
+
+/* Hover effect for links inside the sidebar */
+.sidebar-navigation nav ul a:hover {
+    background-color: var(--secondary-color);
+    color: var(--color-white);
+}
+
+/* Hover effect for list items inside the links */
+.sidebar-navigation nav ul a:hover li {
+    color: var(--color-white);
+}
+
+/* Active state styling for various navigation types - changes background color */
+.home-navigation .index-active,
+.mood-register-navigation .mood-register-active,
+.insights-navigation .insights-active,
+.goals-navigation .goals-active,
+.dashboard-navigation .dashboard-active,
+.manage-users-navigation .manage-users-active,
+.manage-contents-navigation .manage-contents-active,
+.user-feed-navigation .user-feed-active,
+.blocked-words-navigation .blocked-words-active {
+    background-color: var(--secondary-color); /* Sets background color for active states */
+    transition: ease 0.2s; /* Smooth transition effect */
+}
+
+/* Text color for active list items within different navigation menus */
+.home-navigation .index-active li,
+.mood-register-navigation .mood-register-active li,
+.insights-navigation .insights-active li,
+.goals-navigation .goals-active li,
+.dashboard-navigation .dashboard-active li,
+.manage-users-navigation .manage-users-active li,
+.manage-contents-navigation .manage-contents-active li,
+.user-feed-navigation .user-feed-active li,
+.blocked-words-navigation .blocked-words-active li {
+    color: var(--color-white); /* Changes text color for active items */
+}
+
+
+/* ---------- Heart Header Section ---------- */
+
+/* Heart header container with flexbox for vertical and horizontal centering */
+.heart-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Heart shape container */
+.heart-header .heart {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}  
+
+/* Left side of the heart with a slight left margin */
+.heart-header .heart .heart-left {
+    width: 2rem;
+    height: 4rem;
+    margin-left: -0.87rem;
+    background-color: var(--primary-color);
+    border-radius: 1.25rem 1.25rem;
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+/* Right side of the heart with slight left positioning */
+.heart-header .heart .heart-right {
+    width: 2rem;
+    height: 4rem;
+    background-color: rgba(64, 146, 144, 0.9);
+    border-radius: 1.25rem 1.25rem;
+    transform: rotate(45deg);
+    position: relative;
+    left: 0.6rem;
+}
+
+/* Header for the name inside the heart header */
+.heart-header .name-header {
+    font-size: 20px;
+    color: var(--primary-color);
+    font-family: 'Gudea', sans-serif;
+}
+
+/* Styling for the span within the name header, using a secondary color */
+.heart-header .name-header span {
+    color: var(--secondary-color);
+}
+
+
+/* ---------- Top Header ---------- */
+
+/* Top Header - Defines the overall layout and appearance of the fixed top header */
+.top-header {
+    width: 100%;
+    height: 90px;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    justify-content: end;
+    gap: 50px;
+}
+
+/* Styling for links inside the top header */
+.top-header a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Styling for the sticky logout button inside the top header */
+.top-header .logout-sticky {
+    text-align: center;
+    margin-right: 30px;
+}
+
+/* Hover effect for the sticky logout button */
+.top-header a .logout-sticky:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+/* Styling for the logout button */
+.top-header a .logout-sticky {
+    text-decoration: none;
+    color: var(--color-white);
+    background-color: var(--secondary-color);
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    padding: 17px 30px;
+    border-radius: 25px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 0px 5px 0px, rgb(0 0 0 / 10%) 0px 0px 1px 0px;
+    transition: ease 0.2s;
+    font-size: 14px;
+}
+
+/* Wrapper for header display elements */
+.header-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Icon styling inside the header */
+.header-icon {
+    width: 35px;
+    height: 35px;
+}
+
+/* Styling for images inside header icons */
+.header-icon img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Wrapper for the name section in the header */
+.header-name-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Name layout inside the header */
+.header-name {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: 15px;
+}
+
+/* Removes margin from paragraph elements inside the name section */
+.header-name p {
+    margin: 0;
+}
+
+/* Title section inside the header */
+.header-title p {
+    margin: 0;
+    margin-top: -3px;
+    font-size: 12px;
+}
+
+
+/* ---------- Title Styling Section ---------- */
+
+/* Styling for the English title with a specific font size and accent color */
+.english-title {
+    font-size: 18px;
+    color: var(--accent-color);
+    margin-top: -5px;
+} 
+
+/* Styling for the Japanese title with a larger font size */
+.japanese-title {
+    font-size: 28px;
+} 
+
+
+/* ---------- Breadcrumbs Styling ---------- */
+
+/* Breadcrumbs styling for layout and appearance */
+.breadcrumbs {
+    display: flex;
+    margin-top: -45px;
+    padding: 10px 10px;
+    margin-left: 35px;
+}
+
+/* Breadcrumbs styling specific to admin pages */
+.breadcrumbs-admin {
+    margin-top: -45px;
+    margin-left: 35px;
+}
+
+/* Breadcrumb text styling */
+.breadcrumbs p {
+    padding: 10px;
+    font-size: 12px;
+    color: var(--secondary-color);
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+/* Hover effect for breadcrumb text */
+.breadcrumbs p:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Active breadcrumb styling */
+.breadcrumbs p.bread-active {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: default;
+}
+
+/* Arrow icon styling within breadcrumbs */
+.breadcrumbs .fa-angle-right {
+    align-self: center;
+    color: var(--primary-color);
+}
+
+
+/* ---------- Footer Section ---------- */
+footer {
+    width: 100%;
+    padding: 20px 0;
+    background-color: var(--color-white);
+    text-align: center;
+    color: var(--primary-color);
+}
+
+
+
+/* ---------- Button Styles ---------- */
+
+/* Primary button styles */
+.primary-btn {
+    width: 142px;
+    padding: 15px 20px;
+    background-color: var(--accent-color);
+    color: var(--color-white);
+    border-radius: 25px;
+    transition: ease 0.2s;
+    font-size: 14px;
+    border: none;
+}
+
+/* Hover effect for primary button and button container */
+.primary-btn:hover {
+    background-color: var(--secondary-color);
+    cursor: pointer;
+    transition: ease 0.2s;
+}
+
+/* Secondary button styles */
+.secondary-btn {
+    width: 150px;
+    height: 60px;
+    padding: 15px 25px;
+    background-color: var(--color-white);
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 25px;
+    transition: ease 0.2s;
+    font-size: 14px;
+}
+
+/* Hover effect for secondary button */
+.secondary-btn:hover {
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    transition: ease 0.2s;
+}
+
+/* Styling for tertiary button */
+.teritary-btn {
+    color: var(--accent-color);
+    text-decoration: underline;
+    font-family: 'Gudea', sans-serif;
+}
+
+/* Hover effect for tertiary button */
+.teritary-btn:hover {
+    color: var(--secondary-color);
+}
+
+
+/* ---------- Input Error Styles ---------- */
+
+/* Container for the input error message, positioned absolutely to the right */
+.input-error {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Styling for the error message paragraph */
+.input-error p {
+    margin: 0;
+    text-align: end;
+    padding: 3px !important;
+    font-size: 11px !important;
+    color: var(--color-fiery-red) !important;
+}
+
+
+/* ---------- Alert Styles ---------- */
+
+/* Main alert container - centered horizontally with a fixed width */
+.alert {
+    margin: 0 auto;
+    width: 600px;
+    position: relative;
+}
+
+/* Styling for the button inside the alert */
+.alert button {
+    margin: 0 10px;
+    height: 40px;
+    align-self: self-end;
+}
+
+/* Close button - positioned absolutely within the alert */
+.btn-close {
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+}
+
+/* Icon inside the close button */
+.btn-close .fa-xmark {
+    color: var(--color-gray-7);
+    font-size: 25px;
+}
+
+/* Hover effect for the close button icon */
+.btn-close .fa-xmark:hover {
+    color: var(--color-gray-6);
+    cursor: pointer;
+}
+
+/* Success and failure alert styles - shared styles */
+.success-alert,
+.fail-alert {
+    text-align: center;
+}
+
+/* Success alert specific styles */
+.success-alert {
+    border: 1px solid var(--color-vibrant-lime);
+    background-color: var(--color-translucent-green);
+}
+
+/* Failure alert specific styles */
+.fail-alert {
+    border: 1px solid var(--color-crimson-red);
+    background-color: var(--color-faded-crimson);
+}
+
+/* Padding for the text inside alert messages */
+.alert .message-text p {
+    padding: 0 10px;
+}
+
+
+/* ---------- Modal Styling  ---------- */
+
+/* Styling for the modal container */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+
+/* Styling for the modal content area */
+.modal-content {
+    width: 50%;
+    margin: 10% auto;
+    padding: 30px 20px;
+    background-color: var(--color-off-white);
+    border: 1px solid var(--color-gray-3);
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* Styling for the profile image modal wrapper */
+.profile-image-modal-wraper {
+    width: 60%;
+}
+
+/* Styling for inner content structure within the modal */
+.modal-content div {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+}
+
+/* Layout for the main modal area */
+.modal-main {
+    width: 90%;
+    margin: 0 auto !important;
+    padding-top: 15px !important;
+    padding-right: 10px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 20px;
+}
+
+/* Styling for modal headings */
+.modal-content h3 {
+    margin: 15px 0 !important;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Hides radio buttons inside modal */
+.modal-content input[type='radio'] {
+    visibility:hidden;
+}
+
+/* Custom styling for the radio button circle */
+.modal-content input[type='radio']:after {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    border: 1px solid var(--color-gray-2);
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    z-index: 10;
+}
+
+/* Styling for the radio button when it is checked */
+.modal-content input[type='radio']:checked:after {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    top: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 4px solid var(--accent-color);
+    z-index: 10;
+}
+
+/* Table styles for the image change form */
+.image-change-form-table table  { 
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid var(--background-color);
+} 
+
+/* Styling for the last row of the table */
+.image-change-form-table table tr:last-child{
+    border-bottom: 3px solid var(--background-color);
+}
+
+/* Styling for the table cells in the form */
+.image-change-form-table table tbody tr td {
+    width: 350px;
+    padding: 13px 25px;
+    padding-left: 35px;
+    border-bottom: 2px solid var(--background-color);
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+/* Styling for the first column of the table */
+.image-change-form-table table tr td:first-child {
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--color-white);
+    font-weight: 600;
+}
+
+/* Styling for the input fields inside the table */
+.image-change-form-table table tbody tr td input {
+    padding: 5px 10px;
+    font-size: 15px;
+    width: 326px;
+    margin: 0 auto;
+    color: var(--primary-color);
+}
+
+/* Button container styling inside the modal */
+.modal-content .modal-buttons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.modal-content .japanese-prompt {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.modal-content .english-prompt {
+    font-size: 18px;
+    color: var(--accent-color);
+    margin-top: -5px;
+    font-weight: bold;
+}
+
+/* Styling for the cancel button */
+.modal-main .cancel-button,
+.modal-main .cancel-delete-button {
+    width: 100px;
+    padding: 15px;
+    border-radius: 25px;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    background-color: var(--color-white);
+    transition: ease 0.2s;
+    align-self: center;
+}
+
+.modal-main .cancel-delete-button p {
+    margin: 0;
+}
+
+/* Hover effect for the cancel button */
+.modal-main .cancel-button:hover,
+.modal-main .cancel-delete-button:hover {
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    background-color: var(--color-white);
+    cursor: pointer;
+}
+
+
+/* Styling for the submit button */
+.modal-main .submit-upload-button,
+.modal-main .delete-confirmation-button {
+    width: 135px;
+    padding: 18px 15px;
+    font-size: 14px;
+    border-radius: 25px;
+    border: 2px solid var(--accent-color);
+    color: var(--color-white);
+    background-color: var(--accent-color);
+    transition: ease 0.2s;
+}
+
+/* Hover effect for the submit button */
+.modal-main .submit-upload-button:hover,
+.modal-main .select-button:hover,
+.modal-main .delete-confirmation-button:hover {
+    border: 2px solid var(--secondary-color);
+    color: var(--color-white);
+    background-color: var(--secondary-color);
+    cursor: pointer;
+}
+
+/* Styling for button text */
+.cancel-button p, 
+.submit-upload-button p,
+.select-button p {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* ---------- my_page.php, admin_profile.php ---------- */
+
+/* Main wrapper for the user's My Page content */
+.mypage-content-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Left section of the My Page layout */
+.mypage-left-section {
+    width: 49%;
+}
+
+/* Styling for the profile image container */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 0 auto;
+    background-color: var(--color-deep-teal);
+    border: 5px solid var(--background-color);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* Styling for the profile image inside the container */
+.profile-image img {  
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    transition: ease 0.3s;
+}
+
+/* Styling for the text inside the profile image container */
+.profile-image p {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    font-size: 13px;
+    opacity: 0;  /* Initially hidden */
+    transition: ease 0.3s;
+}
+
+/* Hover effect on the profile image: change image opacity and show text */
+.profile-image:hover img {
+    opacity: 0.3;
+    cursor: pointer;
+}
+.profile-image:hover p  {
+    opacity: 1;
+}
+
+/* Container for the user's name */
+.user-name-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Styling for the user's full name */
+.user-name-container .full-name {
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for the user's full name text */
+.user-name-container .full-name p {
+    margin: 20px 0 0;
+    padding: 0 5px;
+    font-size: 26px;
+}
+
+/* Styling for the username container */
+.user-name-container .username {
+    text-align: center;
+}
+
+/* Styling for the username text */
+.user-name-container .username p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    color: var(--secondary-color);
+}
+
+/* Container for user profile content */
+.user-profile-contents {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Styling for the account creation information */
+.user-profile-contents .account-creation-info {
+    width: 80%;
+    margin: 0 auto;
+    text-align: end;
+    font-size: 12px;
+    color: var(--color-gray-5);
+}
+
+/* Wrapper for the account information table */
+.user-profile-contents .account-info-table {
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Styling for the account information table */
+.user-profile-contents .account-info-table table  { 
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid var(--background-color);
+} 
+
+/* Styling for each table cell in the account info table */
+.user-profile-contents .account-info-table table tbody tr td {
+    width: 50%;
+    padding: 13px 25px;
+    padding-left: 35px;
+    border-bottom: 2px solid var(--background-color);
+    font-size: 14px;
+}
+
+/* Styling for the last row in the account info table */
+.user-profile-contents .account-info-table table tr:last-child{
+    border-bottom: 3px solid var(--background-color);
+}
+
+/* Styling for the first column in the account info table */
+.user-profile-contents .account-info-table table tr td:first-child {
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--color-white);
+    font-weight: 600;
+}
+
+/* Styling for the container of action buttons on the profile page */
+.user-profile-contents .profile-action-buttons {
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ---------- account_edit.php ---------- */
+
+/* Wrapper for the account edit section */
+.account-edit-wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Styling for the form inside the account edit wrapper */
+.account-edit-wrapper form {
+    margin-bottom: 80px;
+}
+
+/* Adds bottom margin to the alert message */
+.account-edit-wrapper .alert {
+    margin-bottom: 20px;
+}
+
+/* Table container for editing account information */
+.account-edit-table {
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Title styling inside the account edit table */
+.account-edit-table h3 {
+    margin: 10px 0;
+    text-align: center;
+}
+
+/* Table styling: layout, spacing, and border */
+.account-edit-table table { 
+    width: 70%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 2px solid var(--background-color);
+} 
+
+/* Styling for individual table cells */
+.account-edit-table table tr td {
+    width: 50%;
+    padding: 13px 25px;
+    padding-left: 35px;
+    border-bottom: 2px solid var(--background-color);
+    font-size: 14px;
+    position: relative;
+}
+
+/* Styling for the first column of table cells */
+.account-edit-table table tr td:first-child {
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--color-white);
+    font-weight: 600;
+}
+
+/* Adds a thicker bottom border to the last row of the table */
+.account-edit-table table tr:last-child{
+    border-bottom: 3px solid var(--background-color);
+}
+
+/* Input field styling inside the table cells */
+.account-edit-table table tr td input {
+    width: 100%;
+    padding: 5px 10px;
+    font-size: 15px;
+    margin: 0 auto;
+    color: var(--primary-color);
+
+    box-sizing: border-box;
+}
+
+/* Paragraph styling within table cells */
+.account-edit-table table tr td p {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Error message styling inside the account edit table */
+.account-edit-table .input-error {
+    text-align: end;
+    width: 70% !important;
+}
+
+/* Styling for alert messages within the form */
+.account-edit-table form .alert .message-text { 
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling for the profile edit button */
+.profile-edit-button {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+}
