@@ -149,11 +149,19 @@ To access the admin side of the application:
 ---
 
 ### Notes
-- The application is partly in **Japanese**, so some labels and buttons may appear in Japanese.
+- The application includes a mix of **English** and **Japanese**, with titles often in **English**, some content in both **English** and **Japanese**, and detailed explanations primarily in **Japanese**.
 - The admin login is intended for managing users, posts, and statistical insights. Be cautious when making changes.
-## Known Issues
-- The app currently does not support dark mode.
-- The site is not fully responsive across all devices, and may not display optimally on mobile and tablet screens. This is being worked on to improve the user experience.
+
+
+## Future Improvements
+
+Here are some enhancements that I plan to implement in future versions of the application:
+
+- **Responsive Design:** Make the UI more responsive to improve user experience on various devices.
+- **User Account Management:** Allow users to delete their own accounts.
+- **Expanded User Control:** Enable users to add their own activities, companies, foods, feelings, etc., giving them more control over what they can register.
+- **Edit Daily Trackings:** Allow users to edit their daily tracking entries for more flexibility in managing their data.
+- **Admin Side Enhancements:** Allow admins to sort users. Currently, users are displayed by their user ID when they sign up.
 
 ## Screenshots
 <h3>Landing Page</h3>
