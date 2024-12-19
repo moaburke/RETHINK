@@ -109,7 +109,7 @@ Update `/rethink/` to match the new folder name (e.g., `/newfoldername/`).
 ## Screenshots
 <h3>Landing Page</h3>
 <div>
-  <img src="Screenshots/Index-page.png" alt="Landing Page" width="400" style="display: inline-block; margin-right: 10px;">
+  <img src="Screenshots/Landing-page.png" alt="Landing Page" width="400" style="display: inline-block; margin-right: 10px;">
 </div>
 
 <h3>User Side</h3>
